@@ -116,14 +116,10 @@ const plugins = [
     },
   },
   {
-    resolve: `gatsby-plugin-gtag`,
+    resolve: "@sentry/gatsby",
     options: {
-      // your google analytics tracking id
-      trackingId: config.metadata.gaTrackingId,
-      // Puts tracking script in the head instead of the body
-      head: true,
-      // enable ip anonymization
-      anonymize: false,
+      dsn: config.metadata.sentry,
+      sampleRate: 0.7,
     },
   },
   {

@@ -6,7 +6,7 @@ module.exports = {
     language: 'en',
     url: 'http://localhost',
     pathPrefix: '/',
-    gaTrackingId: null,
+    sentry: null,
     siteImage: null,
     favicon: '/assets/favicon.png',
     themeColor: '#',
