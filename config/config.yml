@@ -112,7 +112,7 @@ features:
   scrollTop: true
   search:
     enabled: true
-    engine: 'algolia'
+    engine: 'localsearch'
     placeholder: 'Search'
     startComponent: 'input' # icon
     excerptSize: 8000

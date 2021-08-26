@@ -277,4 +277,7 @@ module.exports = {
     siteUrl: config.metadata.url,
   },
   plugins: plugins,
+  flags: {
+    DEV_SSR: false,
+  }
 };
