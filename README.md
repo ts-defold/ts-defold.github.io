@@ -1,10 +1,5 @@
 # BooGi
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/c0cec88f-db01-4c57-8b8d-782e07a9f73f/deploy-status)](https://app.netlify.com/sites/boogi/deploys)
-![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/filipowm/boogi)
-![CI](https://github.com/filipowm/boogi/workflows/CI/badge.svg)
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/d0d45783a9bb47058b574a8a42d736fd)](https://www.codacy.com/manual/matfilipowicz/BooGi?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=filipowm/BooGi&amp;utm_campaign=Badge_Grade)
-
 Create **awesome documentation** or tutorial pages with modern look-and-feel.
 Customize it to your needs, run locally, deploy anywhere.
 
@@ -59,28 +54,6 @@ also a live demo.
 
 ## 🚀 Quickstart
 
-### Using `boogi-cli` (recommended)
-
-You need to have `boogi-cli` installed: `npm install -g boogi-cli`.
-
-1. Initialize BooGi project (config wizard will help you to 
-   set it up!) in current directory:
-   ```bash
-   boogi init
-   ```
-
-2. Run your app in development mode with live reload
-   ```bash
-   boogi develop
-   ```
-
-3. Build you app package ready for deployment
-   ```bash
-   boogi build
-   ```
-
-### Using `gatsby-cli`
-
 You need to have `gatsby-cli` installed: `npm install -g gatsby-cli`.
 
 Get started by running the following commands (using Gatsby CLI):
@@ -92,7 +65,3 @@ $ gatsby develop
 ```
 
 Visit `http://localhost:8000/` to view the app.
-
-## ☁️ Deploy
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/filipowm/boogi)
