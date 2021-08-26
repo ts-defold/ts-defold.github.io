@@ -5,7 +5,6 @@ const configManager = require('./src/utils/config');
 const path = require('path');
 const emoji = require('./src/utils/emoji');
 const _ = require('lodash');
-const { truncate } = require('lodash');
 
 const config = configManager.read();
 configManager.generate(__dirname + '/.generated.config.js', config);
