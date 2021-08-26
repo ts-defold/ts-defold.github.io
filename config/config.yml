@@ -54,6 +54,7 @@ pwa:
     icon: "/assets/favicon.png"
 
 social:
+  discord: https://discord.gg/eukcq5m
   github: https://github.com/ts-defold/create
   twitter: https://twitter.com/tsdefold
 

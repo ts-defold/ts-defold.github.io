@@ -33,16 +33,12 @@ const SocialButtonsBuilder = (baseProps) => {
 
 export default (iconBaseProps, socialConfig) => {
   const buttons = SocialButtonsBuilder(iconBaseProps);
+  buttons.create(socialConfig.discord, 'Discord');
   buttons.create(socialConfig.facebook, 'Facebook');
   buttons.create(socialConfig.github, 'Github');
   buttons.create(socialConfig.gitlab, 'Gitlab');
   buttons.create(socialConfig.instagram, 'Instagram');
-  buttons.create(socialConfig.linkedin, 'Linkedin', {
-    additionalProps: {
-      fill: iconBaseProps.stroke,
-      hoverFill: iconBaseProps.hoverStroke,
-    },
-  });
+  buttons.create(socialConfig.linkedin, 'Linkedin');
   buttons.create(socialConfig.mail, 'Mail', {
     linkFn: (address) => `mailto:${address}`,
     titleFn: () => `Send email to owner`,
@@ -53,12 +49,7 @@ export default (iconBaseProps, socialConfig) => {
   });
   buttons.create(socialConfig.slack, 'Slack');
   buttons.create(socialConfig.twitch, 'Twitch');
-  buttons.create(socialConfig.twitter, 'Twitter', {
-    additionalProps: {
-      fill: iconBaseProps.stroke,
-      hoverFill: iconBaseProps.hoverStroke,
-    },
-  });
+  buttons.create(socialConfig.twitter, 'Twitter');
   buttons.create(socialConfig.youtube, 'Youtube');
   return buttons.get();
 };

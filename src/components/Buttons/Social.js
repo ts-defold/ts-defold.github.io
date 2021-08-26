@@ -2,18 +2,20 @@ import PropTypes from 'prop-types';
 import ButtonIcon from './ButtonIcon';
 import { Link } from '../';
 import {
+  Discord as DC,
   Facebook as FB,
-  GitHub as GH,
+  Github as GH,
   Gitlab as GL,
   Instagram as IN,
   Linkedin as LI,
-  Mail as MA,
+  Gmail as MA,
   Rss as RS,
   Slack as SL,
   Twitch as TC,
   Twitter as TW,
   Youtube as YT,
-} from 'react-feather';
+} from '@icons-pack/react-simple-icons';
+
 
 const SocialButton = ({ link, ...props }) => {
   // const theme = useTheme();
@@ -32,6 +34,7 @@ SocialButton.propTypes = {
   stroke: PropTypes.string,
 };
 
+export const Discord = (props) => <SocialButton icon={DC} {...props} />;
 export const Facebook = (props) => <SocialButton icon={FB} {...props} />;
 export const Github = (props) => <SocialButton icon={GH} {...props} />;
 export const Gitlab = (props) => <SocialButton icon={GL} {...props} />;

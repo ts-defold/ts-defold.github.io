@@ -243,8 +243,8 @@ const Header = ({ setShowSearch, location, themeProvider, show, toggleFullscreen
       const theme = useTheme();
       const iconBaseProps = {
         background: theme.header.icons.background,
-        hoverStroke: theme.header.icons.hover,
-        stroke: theme.header.icons.stroke,
+        hoverFill: theme.header.icons.hover,
+        fill: theme.header.icons.fill,
       };
       const DarkModeButton = config.features.darkMode.enabled ? (
         <DarkModeSwitch
