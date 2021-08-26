@@ -1,8 +1,15 @@
 import * as React from 'react';
+import Prism from 'prism-react-renderer/prism';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import theme from 'prism-react-renderer/themes/dracula';
 import Loadable from 'react-loadable';
 import LoadingProvider from './loading';
+
+// Include extra prism languages
+if (typeof global !== "undefined" || typeof window !== "undefined") {
+(typeof global !== "undefined" ? global : window).Prism = Prism;
+require("prismjs/components/prism-lua");
+}
 
 /** Removes the last token from a code example if it's empty. */
 function cleanTokens(tokens) {
