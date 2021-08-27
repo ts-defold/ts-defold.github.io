@@ -104,7 +104,7 @@ features:
     matchRegex: "^/"
     outputPath: "/rss.xml"
     generator: "gatsby"
-  scrollTop: true
+  scrollTop: false
   search:
     enabled: true
     engine: 'localsearch'
