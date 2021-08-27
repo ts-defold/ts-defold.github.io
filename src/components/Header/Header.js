@@ -260,7 +260,7 @@ const Header = ({ setShowSearch, location, themeProvider, show, toggleFullscreen
         ''
       );
       const toggleMenuOpen = () => setMenuOpen(!menuOpen);
-      globalHistory.listen((location) => {
+      globalHistory.listen(() => {
         setMenuOpen(false);
         setShowSearch(false);
       });

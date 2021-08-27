@@ -19,6 +19,9 @@ header:
     - text: Docs
       link: "/"
       external: false
+    - text: Playground
+      link: "/playground"
+      external: false
 sidebar:
   enabled: true
   # forcedNavOrder:
@@ -106,7 +109,7 @@ features:
     enabled: true
     engine: 'localsearch'
     placeholder: 'Search'
-    startComponent: 'input' # icon
+    startComponent: 'icon'
     excerptSize: 8000
     debounceTime: 380
     snippetLength: 23

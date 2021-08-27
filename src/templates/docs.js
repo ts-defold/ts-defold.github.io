@@ -8,7 +8,7 @@ import emoji from '../utils/emoji';
 import { onMobile, onTablet } from '../styles/responsive';
 
 const Title = styled.h1`
-  font-size: 24pt
+  font-size: 24pt;
   line-height: 1.5;
   font-weight: 500;
   border-left: 2px solid ${(props) => props.theme.colors.primary};
@@ -129,38 +129,41 @@ export default class MDXRuntimeTest extends React.Component {
     return (
       <Layout {...this.props}>
         <Seo frontmatter={mdx.frontmatter} url={this.props.location.href} title={headTitle} />
-        <PageTitle>
-          <TitleWrapper>
-            <Title>{docTitle}</Title>
-            {docsLocation && ((editable && mdx.frontmatter.editable !== false) || mdx.frontmatter.editable === true) ? (
-              <EditOnRepo
-                location={docsLocation}
-                branch={gitBranch.name}
-                path={mdx.parent.relativePath}
-                repoType={docsLocationType}
-              />
-            ) : (
-              ''
-            )}
-          </TitleWrapper>
-          {(config.features.showMetadata === true && mdx.frontmatter.showMetadata !== false) ||
-          mdx.frontmatter.showMetadata === true ? (
-            <div css={{ display: 'block' }}>
-              {mdx.parent.fields ? (
-                <LastUpdated
-                  time={mdx.parent.fields.gitLogLatestDate}
-                  name={mdx.parent.fields.gitLogLatestAuthorName}
-                  email={mdx.parent.fields.gitLogLatestAuthorEmail}
+        
+        {mdx.frontmatter.hideTitle ? '' : (
+          <PageTitle>    
+            <TitleWrapper>
+              <Title>{docTitle}</Title>
+              {docsLocation && ((editable && mdx.frontmatter.editable !== false) || mdx.frontmatter.editable === true) ? (
+                <EditOnRepo
+                  location={docsLocation}
+                  branch={gitBranch.name}
+                  path={mdx.parent.relativePath}
+                  repoType={docsLocationType}
                 />
               ) : (
                 ''
               )}
-              <ReadingTime time={mdx.timeToRead * 2} />
-            </div>
-          ) : (
-            ''
-          )}
-        </PageTitle>
+            </TitleWrapper>
+            {(config.features.showMetadata === true && mdx.frontmatter.showMetadata !== false) ||
+            mdx.frontmatter.showMetadata === true ? (
+              <div css={{ display: 'block' }}>
+                {mdx.parent.fields ? (
+                  <LastUpdated
+                    time={mdx.parent.fields.gitLogLatestDate}
+                    name={mdx.parent.fields.gitLogLatestAuthorName}
+                    email={mdx.parent.fields.gitLogLatestAuthorEmail}
+                  />
+                ) : (
+                  ''
+                )}
+                <ReadingTime time={mdx.timeToRead * 2} />
+              </div>
+            ) : (
+              ''
+            )}
+          </PageTitle>
+        )}
         <ContentWrapper>
           <MDXRenderer>{mdx.body}</MDXRenderer>
         </ContentWrapper>
@@ -213,6 +216,7 @@ export const pageQuery = graphql`
         editable
         showPreviousNext
         showToc
+        hideTitle
       }
     }
     gitBranch {
