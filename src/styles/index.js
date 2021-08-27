@@ -82,7 +82,7 @@ export const anchor = (theme) => css`
   transition: color 0.15s;
   color: ${theme.colors.primary};
   &:hover {
-    color: ${theme.colors.primaryDark};
+    color: ${theme.colors.hover};
   }
 `;
 
@@ -158,23 +158,8 @@ export const table = (theme) => css`
   }
 `;
 
-export const scrollbar = css`
-  &::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    border-radius: 8px;
-    background-color: #f5f5f5;
-  }
-
-  &::-webkit-scrollbar {
-    width: 10px;
-    background-color: #f5f5f5;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    border-radius: 8px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    background-color: #555;
-  }
+export const html = (theme) => css`
+  background-color: ${theme.colors.background};
 `;
 
 export const skipParagraph = css`

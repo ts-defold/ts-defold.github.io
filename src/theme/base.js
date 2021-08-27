@@ -48,7 +48,7 @@ const navigationSidebar = (colors) => ({
   border: colors.border,
   row: {
     hover: colors.border,
-    active: colorfn(colors.white).mix(colorfn(colors.background)).darken(.75).hex(),
+    active: colorfn(colors.font).mix(colorfn(colors.background)).darken(.75).hex(),
     activeBorder: colors.border,
     collapseHover: colors.hover,
   },
@@ -56,7 +56,7 @@ const navigationSidebar = (colors) => ({
     group: decreaseIntensivity(colors.font, 0.25),
     base: colors.font,
     nested: decreaseIntensivity(colors.font, 0.25),
-    active: colors.orange,
+    active: colors.whiteBright,
     hover: colors.orange,
   },
   poweredBy: {
@@ -71,7 +71,7 @@ const header = (colors) => ({
   shadow: colors.shadow,
   font: {
     base: colors.primary,
-    hover: colors.orange, //colorfn(colors.primary).negate().hex(),
+    hover: colors.hover,
   },
   border: colors.border,
   icons: {
@@ -79,7 +79,7 @@ const header = (colors) => ({
     shadow: colors.shadow,
     fill: decreaseIntensivity(colors.background, 0.4),
     stroke: decreaseIntensivity(colors.background, 0.4),
-    hover: colors.violet,
+    hover: colors.green,
   },
 });
 
@@ -111,7 +111,7 @@ const search = (colors) => ({
 const editOnRepo = (colors) => ({
   background: colors.background,
   border: colors.border,
-  hover: colors.hover,
+  hover: colors.green,
   font: {
     base: colors.font,
     hover: grayscaleCompatible(colors.hover),
@@ -129,22 +129,22 @@ const highlights = (colors) => ({
   warning: {
     border: colors.orange,
     background: colors.orangeLight,
-    font: colors.fontDark,
+    font: colors.white,
   },
   error: {
     border: colors.red,
     background: colors.redLight,
-    font: colors.fontDark,
+    font: colors.white,
   },
   info: {
     border: colors.cyan,
     background: colors.cyanLight,
-    font: colors.fontDark,
+    font: colors.white,
   },
   tip: {
     border: colors.green,
     background: colors.greenLight,
-    font: colors.fontDark,
+    font: colors.white,
   },
 });
 
@@ -179,9 +179,9 @@ const previousNext = (colors) => ({
 });
 
 const scrollTop = (colors) => ({
-  background: colors.violet,
-  hover: increaseIntensivity(colors.violet, 0.25),
-  arrow: colorfn(colors.violet).negate().grayscale().lighten(0.4).rgb().string(),
+  background: colors.primary,
+  hover: increaseIntensivity(colors.primary, 0.25),
+  arrow: colorfn(colors.primary).negate().grayscale().lighten(0.4).rgb().string(),
 });
 
 export default {

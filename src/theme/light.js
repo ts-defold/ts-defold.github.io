@@ -9,9 +9,9 @@ const colors = {
   fontDark: '#516785',
   background: '#1b212c',
   mainBackground: '#212835',
-  border: '#181A1F',
-  hover: defaultColors.blue,
-  shadow: '#181A1F',
+  border: defaultColors.black,
+  hover: defaultColors.orange,
+  shadow: defaultColors.black,
 };
 
 export default {

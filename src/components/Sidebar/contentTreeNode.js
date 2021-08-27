@@ -16,6 +16,7 @@ import emoji from '../../utils/emoji';
 
 const activeNode = (theme) => css`
   border: 1px solid ${theme.navigationSidebar.row.activeBorder};
+  border-radius: 4px 0 0 4px;
   border-right: none;
   > a,
   button {
@@ -59,7 +60,9 @@ const NodeContent = styled(({ className, text, link, children }) => (
   &:hover {
     > a,
     > button {
+      color: ${(props) => props.theme.navigationSidebar.font.hover};
       background-color: ${(props) => props.theme.navigationSidebar.row.hover};
+      border-radius: 4px 0 0 4px;
     }
   }
 `;
