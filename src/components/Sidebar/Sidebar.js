@@ -5,7 +5,6 @@ import ContentTree from './contentTree';
 import Links from './links';
 import PoweredBy from './poweredBy';
 import { getNavigationData } from '../Navigation';
-import { scrollbar } from '../../styles';
 import { onMobile } from '../../styles/responsive';
 
 const Sidebar = styled.div`
@@ -123,7 +122,7 @@ const ContentNavigation = ({ show, className, location }) => {
   const edges = getNavigationData();
   return (
     <NavigationWrapper className={className} show={show}>
-      <SidebarMain css={scrollbar}>
+      <SidebarMain>
         <ContentTree edges={edges} location={location} />
         {config.sidebar.links && config.sidebar.links.length > 0 ? (
           <>
