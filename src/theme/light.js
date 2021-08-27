@@ -5,13 +5,13 @@ const colors = {
 
   primary: defaultColors.blue,
   primaryDark: defaultColors.blueDark,
-  font: '#333334',
-  fontDark: '#121213',
-  background: '#F5F7F9',
-  mainBackground: '#fefefe',
-  border: '#DBDDDF',
+  font: '#a8b5d0',
+  fontDark: '#516785',
+  background: '#1b212c',
+  mainBackground: '#212835',
+  border: '#181A1F',
   hover: defaultColors.blue,
-  shadow: defaultColors.gray + '33',
+  shadow: '#181A1F',
 };
 
 export default {

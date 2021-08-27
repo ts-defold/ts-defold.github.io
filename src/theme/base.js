@@ -48,7 +48,7 @@ const navigationSidebar = (colors) => ({
   border: colors.border,
   row: {
     hover: colors.border,
-    active: colorfn(colors.white).mix(colorfn(colors.background)).whiten(3.5).hex(),
+    active: colorfn(colors.white).mix(colorfn(colors.background)).darken(.75).hex(),
     activeBorder: colors.border,
     collapseHover: colors.hover,
   },
@@ -56,8 +56,8 @@ const navigationSidebar = (colors) => ({
     group: decreaseIntensivity(colors.font, 0.25),
     base: colors.font,
     nested: decreaseIntensivity(colors.font, 0.25),
-    active: colors.primary,
-    hover: colors.primary,
+    active: colors.orange,
+    hover: colors.orange,
   },
   poweredBy: {
     font: colors.grayLight,
@@ -67,19 +67,19 @@ const navigationSidebar = (colors) => ({
 });
 
 const header = (colors) => ({
-  background: colors.background,
+  background: colors.mainBackground,
   shadow: colors.shadow,
   font: {
     base: colors.primary,
-    hover: colorfn(colors.primary).negate().hex(),
+    hover: colors.orange, //colorfn(colors.primary).negate().hex(),
   },
   border: colors.border,
   icons: {
-    background: colors.background,
+    background: colors.mainBackground,
     shadow: colors.shadow,
     fill: decreaseIntensivity(colors.background, 0.4),
     stroke: decreaseIntensivity(colors.background, 0.4),
-    hover: colors.primary,
+    hover: colors.violet,
   },
 });
 
@@ -115,7 +115,7 @@ const editOnRepo = (colors) => ({
   font: {
     base: colors.font,
     hover: grayscaleCompatible(colors.hover),
-  },
+  }
 });
 
 const jargon = (colors) => ({
@@ -137,8 +137,8 @@ const highlights = (colors) => ({
     font: colors.fontDark,
   },
   info: {
-    border: colors.blue,
-    background: colors.blueLight,
+    border: colors.cyan,
+    background: colors.cyanLight,
     font: colors.fontDark,
   },
   tip: {
@@ -150,7 +150,7 @@ const highlights = (colors) => ({
 
 const table = (colors) => ({
   header: {
-    background: colors.primary,
+    background: colors.violet,
     font: increaseIntensivity(colorfn(colors.primary).negate().grayscale(), 0.5),
   },
   oddRow: colors.mainBackground,
@@ -163,8 +163,8 @@ const tableOfContents = (colors) => ({
   background: colors.mainBackground,
   font: {
     base: decreaseIntensivity(colors.font, 0.15),
-    hover: colors.primary,
-    current: colors.primary,
+    hover: colors.violet,
+    current: colors.violet,
   },
   border: colors.border,
 });
@@ -173,15 +173,15 @@ const previousNext = (colors) => ({
   background: colors.mainBackground,
   hover: colors.primary,
   font: colors.font,
-  fontLabel: decreaseIntensivity(colors.font, 0.45),
+  fontLabel: decreaseIntensivity(colors.font, 0.1),
   border: colors.border,
   shadow: colors.shadow,
 });
 
 const scrollTop = (colors) => ({
-  background: colors.primary,
-  hover: increaseIntensivity(colors.primary, 0.15),
-  arrow: colorfn(colors.primary).negate().grayscale().lighten(0.4).rgb().string(),
+  background: colors.violet,
+  hover: increaseIntensivity(colors.violet, 0.25),
+  arrow: colorfn(colors.violet).negate().grayscale().lighten(0.4).rgb().string(),
 });
 
 export default {
