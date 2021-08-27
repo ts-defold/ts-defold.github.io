@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Prism from 'prism-react-renderer/prism';
 import Highlight, { defaultProps } from 'prism-react-renderer';
-import theme from 'prism-react-renderer/themes/dracula';
+import theme from '../../theme/prism/oneDark';
 import Loadable from 'react-loadable';
 import LoadingProvider from './loading';
 
