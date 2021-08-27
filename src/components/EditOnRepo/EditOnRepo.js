@@ -5,6 +5,7 @@ import styled from '@emotion/styled';
 import { Link } from '../';
 import { shadowAround } from '../../styles';
 import { onTablet, onMobile } from '../../styles/responsive';
+import { Gitlab, Github, Bitbucket } from "@icons-pack/react-simple-icons";
 
 const Edit = styled('div')`
   text-align: right;
@@ -42,11 +43,11 @@ const Edit = styled('div')`
   }
 `;
 
-const EditButton = styled(({ className, icon, link, text }) => {
+const EditButton = styled(({ className, link, text, children }) => {
   return (
     <Edit>
       <Link className={className} to={link} css={shadowAround} target={'_blank'}>
-        <img src={icon} alt={'Git Repository'} loading={'lazy'} /> 
+        {children}
         <span>{text}</span>
       </Link>
     </Edit>
@@ -64,7 +65,7 @@ const EditButton = styled(({ className, icon, link, text }) => {
     height: 32px;
     min-height: 32px;
   }
-  img {
+  svg {
     width: 20px;
     display: inline-block;
     margin-right: 10px;
@@ -79,7 +80,7 @@ const EditOnRepo = ({ repoType, branch, location, path }) => {
   let text = 'Edit on ';
   switch (repoType.toLowerCase()) {
     case 'gitlab':
-      icon = require('images/gitlab.svg');
+      icon = <Gitlab/>;
       const splitted = location.split('/');
       const protocol = splitted[0];
       const host = splitted[2];
@@ -89,12 +90,12 @@ const EditOnRepo = ({ repoType, branch, location, path }) => {
       text += 'GitLab';
       break;
     case 'github':
-      icon = require('images/github.svg');
+      icon = <Github/>;
       link = `${location}/edit/${branch}/${rootDir}/${path}`;
       text += 'Github';
       break;
     case 'bitbucket':
-      icon = require('images/bitbucket.svg');
+      icon = <Bitbucket/>;
       link = `${location}/src/${branch}/${rootDir}/${path}?mode=edit&spa=0&at=${branch}`;
       text += 'Bitbucket';
       break;
@@ -102,7 +103,7 @@ const EditOnRepo = ({ repoType, branch, location, path }) => {
       console.log(`Repository type ${repoType} is not supported by edit on repo feature`);
       return '';
   }
-  return <EditButton icon={icon} link={link} text={text} />;
+  return <EditButton link={link} text={text}>{icon}</EditButton>;
 };
 
 EditOnRepo.propTypes = {
