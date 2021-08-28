@@ -171,7 +171,7 @@ const tableOfContents = (colors) => ({
 
 const previousNext = (colors) => ({
   background: colors.mainBackground,
-  hover: colors.primary,
+  hover: colors.green,
   font: colors.font,
   fontLabel: decreaseIntensivity(colors.font, 0.1),
   border: colors.border,
