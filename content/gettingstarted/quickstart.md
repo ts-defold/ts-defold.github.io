@@ -1,63 +1,59 @@
 ---
 title: "Quick Start"
-order: 3
+order: 0
 ---
 
 ## Prerequisites
 
-1. Install NodeJS (newest 14+ recommended, minimal 12.18).
-2. Install Yarn: `npm install -g yarn`
-3. Install Boogi CLI: `npm install -g boogi-cli`
+1. Install [NodeJS](https://nodejs.org/en/) (14+ recommended, minimal 12.18).
+2. Install the [Defold Editor](https://defold.com/download/).
 
-These commands may require root rights, depending on your operating
-system and configuration.
+<Info>These commands may require root privileges, depending on your operating
+system and configuration.</Info>
 
-## Quick start
+## Quick Start
 
-1. Initialize BooGi project in current directory:
+1. Create a new ts-defold project:
    ```bash
-   boogi init
+   npm init @ts-defold my-indie-hit
    ```
-   Now wizard will guide you through core BooGi
-   configuration.
+   The wizard will guide you through the project configuration
 
-2. Run your app in development mode with live reload
+2. Open the project in your favorite editor
    ```bash
-   boogi develop
+   code ./my-indie-hit
    ```
-   You can access your app on `localhost:8000`. Any changes
-   applied will be automatically applied on running
-   development server.
+   <Warning>Visual Studio Code is highly recommended. The template projects come pre-configured with vscode settings and extension recommendations.</Warning>
 
-3. Build you app package ready for deployment
+3. Start the development server
    ```bash
-   boogi build
+   npm run dev
    ```
-   Built package will be available in `public` directory.
+   The development server will start a file watcher and tstl compiler to incrementally compile your changes on save.
 
-## BooGi directory structure
+4. Open the project in the Defold Editor *([installing defold](https://defold.com/manuals/install/))*
+   ```bash
+   /Applications/Defold.app/Contents/MacOS/Defold ./app/game.project
+   # or
+   C:\\Users\\me\\Applications\\Defold\\Defold.exe
+   # or
+   ~/Defold/Defold ./app/game.project
+   ```
+   The template game project is located at: `./app/game.project`.
 
-Below is defined BooGi app directory structure.
-**Important** This is applicable only for apps initialized and
-using BooGi CLI.
+## Project Directory Structure
 
 ```bash
-+-- .boogi.yml   # BooGi CLI configuration file
-+-- package.json # 
-+-- README.md    # Your BooGi app readme
+├─ .eslintrc             # Eslint configured to handle the caveats of tstl & ts-defold
+├─ package.json          # NPM package dependencies and metadata
+├─ tsconfig.json         # TypeScript compiler configuration for tstl & ts-defold
 │
-+-- assets/      # Directory with static assets not used inside content (e.g. logo)
+├─ app/                  # The Defold game project
+│  ├─ lualib_bundle.lua  # TypeScript support library
+│  ├─ modules/           # Transpiled shared lua modules
+│  ├─ scripts/           # Transpiled Defold game scripts (lua)
 │
-+-- config/      # Directory with BooGi app configuration
-│   +-- config.yml  # BooGi configuration file
-│   +-- jargon.yml  # Jargon (abbrevations / definitions) configuration file
-│   +-- theme/      # Directory with BooGi app theme (look-and-feel) configuration
-│       +-- colors.js # Base colors configuration file
-│       +-- dark.js   # Dark theme configuration file
-│       +-- light.js  # Light theme configuration file
-│
-+-- content/     # Directory with your app content
-│   +-- index.md # Root page content file (do not remove!)
-│
-+-- snippets/ # Directory with external code snippets, which can be embedded in content
+├─ src/                  # TypeScript src files [edit these]
+│  ├─ modules/           # Shared modules
+│  ├─ scripts/           # Defold game scripts
 ```

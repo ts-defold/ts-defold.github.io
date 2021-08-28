@@ -8,74 +8,46 @@ hideTitle: true
 
 <HeroImage src="/assets/logo-full.svg" width="300" height="300" />
 
-:wave: **Hello!**
+***ts-defold*** is an awesome [Defold](https://defold.com) toolkit for leveling-up :mushroom:
+your Defold game project with TypeScript.
 
-**BooGi** is an awesome [GatsbyJS](http://gatsbyjs.org/) documentation :book:
-starter. It generates modern documentation pages, which can serve as product
-docs, tutorials, _API_ docs and, especially, knowledge-bases.
+## What ***ts-defold*** Offers? :fire:
 
-Goal is to give teams powerful tool which they can use to efficiently and
-collaboratively share their knowledge. They can easily host it on any
-infrastructure of choice or SaaS hosting like Netlify, Vercel or
-GitHub / GitLab Pages. We want to provide a product, which can be customized
-to (nearly) any needs, either using basic or advanced configuration options.
-
-BooGi is inspired by popular [Gitbook](https://gitbook.com) look and feel.
-It offers custom styling and components that enable building beautiful documentation
-for projects and products quickly. It follows docs-as-code principles, where
-you treat your documentation in the same way as your code.
-
-## What BooGi offers? :fire:
-
-<Tip>BooGi is open source and free -- forever!</Tip>
+<Tip>TS-DEFOLD is open source and free -- forever!</Tip>
 
 <Layout>
 
-- writing docs using Markdown / [MDX](https://github.com/mdx-js/mdx)
-- customizing your page to match your branding and needs
-- GitBook-like style theme, inspired by https://docs.gitbook.com/
-- light / dark mode themes
-- rich-content and rich-text features like text formatting, graphs and diagrams, 
-  quotes, columnar layout, cards, emojis, highlights, live code editor, syntax highlighting,
-  external code snippets and many many more!
-- draft pages
-- Progressive Web App which can work offline
-
-- search integration with [Algolia](https://www.algolia.com/)
-- local search (search in a browser without need to integrate with Algolia)
-- responsive, optimized for mobile devices
-- integration with Google Analytics
-- Search Engine Optimization (_SEO_) friendliness
-- full screen mode
-- RSS feed
-- easy way to edit content on Gitlab, Github or Bitbucket
-- custom CLI helping to initialize and develop BooGi apps
-- easy deployment on platform of your choice
+- Writing your defold game scripts in TypeScript
+- Typings and auto-complete for the [Defold API](https://defold.com/ref/stable/go/)
+- Project generator and project templates 
+- ESLint and prettier configured and ready to go
+- Typeing generator that stays up to date with the Defold _API_
+- A friendly [community of developers](https://discord.gg/eukcq5m)
+- And more!
 
 </Layout>
 
-## What is planned for near future? :sparkles:
+## Why TypeScript? :sparkles:
 
-<Info>Features listed here will arrive in Q2/Q3 2020!</Info>
+Defold uses lua for its game scripting language, and it is an excellent choice!
+The ts-defold team loves lua, and has worked with lua for years. So why TypeScript?
 
-- embed files to download
-- sharing on social media
-- syntax highlighting improvements (more languages, copy code snippets, show language used)
-- new components: tabs, math formulas
-- Kubernetes Helm Chart
+TypeScript brings compiled time type checking, generics, a familar syntax, and a 
+lot of other cool features. After spending 12+ years in the game industry, we have 
+learned that the more errors and potential problems you can detect at compile time 
+over runtime, the faster you can iterate. As your project grows TypeScript will 
+pay off in spades.
 
---- 
+Through the hard work of the [TypeScriptToLua](https://typescripttolua.github.io) project, 
+we have created a toolkit that generates reliable trusted lua code from TypeScript code for 
+your Defold game project. This means that you can reason about the generated code 
+with human eyes :eyes:, know that there is a greater community supporting the transpiler, 
+and trust the 100s of tests that execute on the _TSTL_ codebase.
 
-What we will be working on next?
+## Roadmap :construction_worker: 
 
-- documentation versions
-- API documentation with OpenAPI support
-- authentication (OAuth2, LDAP) when using Docker / Kubernetes deployment
-- improved and even faster site navigation
-- support for multiple languages
-- page rating (likes :thumbsup:, mood faces :smile: or stars :star:)
-- built-in page tutorial (how to use)
+<Info>Check Github Issues for the latest</Info>
 
-**Ready to learn more?**
-
-https://giphy.com/gifs/paulmccartney-dance-l3q2yHZbc8NDfGRBS
+- Auto typings for [extensions](https://github.com/ts-defold/type-gen/issues/8) _WIP_
+- Fancy development server, embeded in `@ts-defold/create`
+- JSX support

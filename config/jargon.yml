@@ -30,6 +30,16 @@ pwa:
   long_name: Progressive Web App
   description: Web app that uses modern web capabilities to deliver an app-like experience
     to users
-boogi:
-  name: BooGi
-  description: T lulzhe best documentation tool in the space! Check it <a href="https://boogi.netlify.app">here</a>.
+tstl:
+  name: TSTL
+  long_name: TypeScriptToLua Transpiler
+  description: An extension to the TypeScript compiler that transpiles TypeScript
+    code to lua
+wip:
+  name: WIP
+  long_name: Work In Progress
+  description: A feature that is still in early preview or under active development
+regex:
+  name: RegEx
+  long_name: Regular Expression
+  description: A PCRE compatible Regular Expression statement

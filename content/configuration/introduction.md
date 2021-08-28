@@ -3,15 +3,14 @@ title: "Introduction"
 order: 0
 ---
 
-BooGi gives you tons of customization and configuration options. You can not
-only turn on/off and adjust nearly any feature available in BooGi, but
-also adjust its color theme (or two if dark mode is enabled).
+Thanks for your interest in ***ts-defold***! There are a lot of moving parts that make everything tick, so if you are interested in the fine details, continue on!
+## On the Shoulders of Giants
 
-Before starting to configure your own BooGi page, we recommend going through 
-basic information about [page structure](/gettingstarted/page_structure)
-and [navigation](/configuration/navigation) details.
+***ts-defold*** is built on NodeJS, npm, and [TypeScriptToLua](https://typescripttolua.github.io).
 
-Then, start with [Setting Up](/configuration/setting-up) to configure your BooGi page
-to match your desired features and metadata. After that you can apply your own
-branding or tune theme to your needs. To do this follow 
-[Themes / styling](/configuration/themes) guide.
+Familiarity with NodeJS and npm is encouraged, though not required.
+
+## First Steps
+
+It is recommended that you go through the [Quick Start](/gettingstarted/quickstart) and [Project Generator](gettingstarted/cli) docs first, then find your way into the depths :hole: of the project configuration. 
+

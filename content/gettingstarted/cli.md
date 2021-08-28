@@ -1,111 +1,79 @@
 ---
-title: "BooGi CLI"
-order: 4
+title: "Project Generator"
+order: 1
 ---
+<br/>
+<HeroImage src="/assets/ts-defold-create.png" width="602" height="433" />
 
 <Tip>
-
-**BooGi CLI is a recommended way of working with BooGi apps**.
-However, if you need full control over your app, what comes with
-a cost of significantly increased complexity, you can
-still use Gatsby CLI.
-
+npm init @ts-defold ./project-name
 </Tip>
 
-CLI for BooGi used to speed up and simplify development
-of BooGi-based apps.
+## Requirements :label:
 
-## :label: Requirements
+- NodeJS version _v14.16.0_ or higher
+- npm
 
-- NodeJS in version _12.13_ or higher
-- Yarn (`npm install -g yarn`)
-- BooGi CLI `npm install -g boogi-cli`
-
-## :book: Guide
+## Guide :book: 
 
 
-### App structure
+### Project Structure
 
 BooGi CLI is creating following directory structure
 
 ```bash
-+-- .boogi.yml   # BooGi CLI configuration file
-+-- package.json # 
-+-- README.md    # Your BooGi app readme
+├─ .eslintrc             # Eslint configured to handle the caveats of tstl & ts-defold
+├─ package.json          # NPM package dependencies and metadata
+├─ tsconfig.json         # TypeScript compiler configuration for tstl & ts-defold
 │
-+-- assets/      # Directory with static assets not used inside content (e.g. logo)
+├─ .github/              # Github workflows and automation [optional]
+├─ .vscode/              # Settings, extensions, and tasks for Visual Studio Code
 │
-+-- config/      # Directory with BooGi app configuration
-│   +-- config.yml  # BooGi configuration file
-│   +-- jargon.yml  # Jargon (abbrevations / definitions) configuration file
-│   +-- theme/      # Directory with BooGi app theme (look-and-feel) configuration
-│       +-- colors.js # Base colors configuration file
-│       +-- dark.js   # Dark theme configuration file
-│       +-- light.js  # Light theme configuration file
+├─ app/                  # The Defold game project
+│  ├─ lualib_bundle.lua  # TypeScript support library
+│  ├─ modules/           # Transpiled shared lua modules
+│  ├─ scripts/           # Transpiled Defold game scripts (lua)
 │
-+-- content/     # Directory with your app content
-│   +-- index.md # Root page content file (do not remove!)
+├─ patches/              # patch-package patches to add additional features to tstl
 │
-+-- snippets/ # Directory with external code snippets, which can be embedded in content
+├─ src/                  # TypeScript src files [edit these]
+│  ├─ modules/           # Shared modules
+│  ├─ scripts/           # Defold game scripts
 ```
 
-### boogi init
+### @ts-defold/create init
 
-Initialize BooGi app in a given path. This gives a way to easily and quickly
-start a BooGi project.
-
-```
-boogi init [path] [-f|--full] [--skip|--skip-config] [-d|--debug]
-```
-
-`path` - path where BooGi project will be initialized. Defaults to current directory.
-
-`-f`, `--full` - use full (advanced) configuration wizard. Guides you through most of available configuration options.
-
-`--skip`, `--skip-config` - skip configuration wizard. Default values will be applied.
-
-`-d`, `--debug` - enable debugging mode.
-
-### boogi develop
-
-Start BooGi development server on specified port (default 8000).
-The development server supports live (hot) reload on any changes.
+Initialize a new ***ts-defold*** app at the specified path. This command will use the [tsd-template](https://github.com/ts-defold/tsd-template) to initialize the project by default.
 
 ```
-boogi develop [-p|--port] [-d|--debug]
-```
-`-p`, `--port` - port on which development server will run. Defaults to `8000`.
-
-`-d`, `--debug` - enable debugging mode.
-
-**Note** Changes done to `config/jargon.yml` will not be reloaded.
-To apply changes to jargon you must restart server.
-
-### boogi build
-
-Build BooGi project. Deployment-ready package will be created
-in `public` directory.
-
-```
-boogi build [-a|--archive] [-d|--debug]
+npm init [path] [--template] [template-name]
 ```
 
-`-a`, `--archive` - archive (zip) result directory. `public.zip` file will be created
-with your built app.
+`path` - path where the new project will be initialized. This should be either a new or empty directory when creating a project.
 
-`-d`, `--debug` - enable debugging mode.
+`--template` - The template to use to initialize the project with. The `template-name` refers to the shortname of a template that is [hosted on github](https://github.com/topics/ts-defold-template). `i.e. tsd-template-war-battles -> war-battles`
 
-### boogi clean
+### @ts-defold/create --serve :construction_worker: 
 
-Wipe the local BooGi environment including built assets and cache.
-Useful in case of issues while running `build` or `develop` commands.
+Start a ***ts-defold*** development server to watch for changes and continuously 
+compile your `src`.
 
 ```
-boogi clean
+npx @ts-defold/create . [--serve] 
 ```
+`--serve` - Create a development server in the preceding path. This will start a file watcher and iterative compiler service to constantly monitor your project for changes and provide feedback on errors and warnings.
 
-## :construction_worker: Roadmap
+## Steps the CLI Takes
 
-- add feature to manage navigation sidebar (create, edit, remove groups etc..)
-- add feature to manage pages (create, edit, remove etc..)
-- add feature to manage theme
+***@ts-defold/create*** is a helper to automate the steps needed when starting a 
+new ***ts-defold*** project. These steps can be done manually as well if you prefer 
+to fork a template and go from there.
+
+- Create a new project directory 
+- Download a template archive from github
+- Extract the archive
+  - *Clone or fork if you prefer*
+- Update the package.json with your unique project info
+- Run `npm ci` to initialize the project using exact versions
+  - *`npm install` also works :wink:
+
