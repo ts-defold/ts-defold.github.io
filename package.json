@@ -1,8 +1,8 @@
 {
-  "name": "BooGi",
+  "name": "ts-defold-gatsby",
   "description": "Generate GitBook-like modern docs/tutorial websites using Gatsby",
-  "author": "Mateusz Filipowicz <matfilipowicz@gmail.com>",
-  "homepage": "https://boogi.netlify.app/",
+  "author": "Justin Walsh",
+  "homepage": "https://ts-defold.dev",
   "keywords": [
     "gatsby",
     "gatsby-starter",
@@ -14,7 +14,7 @@
     "mdx",
     "static-site-generator"
   ],
-  "version": "1.0.1",
+  "version": "1.0.0",
   "dependencies": {
     "@babel/plugin-proposal-export-default-from": "7.10.4",
     "@emotion/core": "10.0.34",
