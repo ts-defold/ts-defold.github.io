@@ -38,14 +38,18 @@ const Link = styled(({ className, to, text }) => {
   }
 `;
 
+const List = styled.ul`
+  margin-bottom: 8px;
+`;
+
 const Links = ({ links }) => (
-  <ul>
+  <List>
     {links.map((link, key) => {
       if (link.link !== '' && link.text !== '') {
         return <Link key={key} to={link.link} text={link.text} />;
       }
     })}
-  </ul>
+  </List>
 );
 
 export default Links;
