@@ -15,14 +15,17 @@ import emoji from '../../utils/emoji';
 // let SomeComponent = styled('div')`${dynamicStyle}`
 
 const activeNode = (theme) => css`
-  border: 1px solid ${theme.navigationSidebar.row.activeBorder};
-  border-radius: 4px 0 0 4px;
   border-right: none;
+  overflow: hidden;
   > a,
   button {
     padding: 7px 23px 7px 17px;
     background-color: ${theme.navigationSidebar.row.active};
     color: ${theme.navigationSidebar.font.active} !important;
+  }
+  > a:first-child,
+  button:first-child {
+    border-radius: 4px 0 0 4px;
   }
 `;
 
@@ -37,7 +40,6 @@ const ContentLink = styled(({ className, link, children }) => (
   font-weight: 500;
   line-height: 1.5;
   padding: 8px 24px 8px 18px;
-  border-radius: 1px;
 `;
 
 const NodeContent = styled(({ className, text, link, children }) => (
@@ -62,6 +64,9 @@ const NodeContent = styled(({ className, text, link, children }) => (
     > button {
       color: ${(props) => props.theme.navigationSidebar.font.hover};
       background-color: ${(props) => props.theme.navigationSidebar.row.hover};
+    }
+    > a:first-child,
+    > button:first-child {
       border-radius: 4px 0 0 4px;
     }
   }
