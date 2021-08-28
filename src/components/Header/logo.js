@@ -63,7 +63,7 @@ const Logo = styled(({ className, link, img, title }) => {
     <div className={className}>
       <LogoWrapper>
         <Link to={link} css={logoStyle(theme)}>
-          <img css={{display: 'inline-block'}} src={img} alt={'logo'} loading={'lazy'} />
+          <img css={{display: 'inline-block', padding: '6px'}} src={img} alt={'logo'} loading={'lazy'} />
           <span css={{display: 'inline-block'}} dangerouslySetInnerHTML={{ __html: title2 }} />
         </Link>
       </LogoWrapper>
