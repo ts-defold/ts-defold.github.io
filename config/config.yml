@@ -91,7 +91,7 @@ features:
     arrowKeyNavigation: true
   propagateNetlifyEnv: true
   rss:
-    enabled: true
+    enabled: false
     title: "TS-DEFOLD: TypeScript <3 Defold"
     showIcon: false
     copyright: "2021, Justin Walsh <@thejustinwalsh>"
@@ -106,7 +106,7 @@ features:
     generator: "gatsby"
   scrollTop: false
   search:
-    enabled: true
+    enabled: false
     engine: 'localsearch'
     placeholder: 'Search'
     startComponent: 'icon'

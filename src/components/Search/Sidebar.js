@@ -4,13 +4,13 @@ import React, { useRef } from 'react';
 import config from 'config';
 import VisibilitySensor from 'react-visibility-sensor';
 import { X } from 'react-feather';
-import loadable from '@loadable/component';
+//import loadable from '@loadable/component';
 
 import { onMobile } from '../../styles/responsive';
 import { visibleMobile } from '../../styles';
 
-const Algolia = loadable(() => import('./algolia/'))
-const LocalSearch = loadable(() => import('./localsearch/'))
+//const Algolia = loadable(() => import('./algolia/'))
+//const LocalSearch = loadable(() => import('./localsearch/'))
 
 const SearchWrapper = styled.div`
   display: flex;
@@ -59,13 +59,14 @@ svg {
 
 const SearchEngine = React.forwardRef((props, ref) => {
   const engine = config.features.search.engine.toLowerCase();
-  switch(engine) {
-    case 'algolia':
-      return <Algolia inputRef={ref} index={config.features.search.indexName} />
-    case 'localsearch':
-      return <LocalSearch inputRef={ref} />
-  }
-  console.warn(`Unsupported search engine: ${engine}`);
+  // switch(engine) {
+  //   case 'algolia':
+  //     return <Algolia inputRef={ref} index={config.features.search.indexName} />
+  //   case 'localsearch':
+  //     return <LocalSearch inputRef={ref} />
+  // }
+  // console.warn(`Unsupported search engine: ${engine}`);
+  void engine, props, ref;
   return null;
 });
 

@@ -268,6 +268,6 @@ module.exports = {
   },
   plugins: plugins,
   flags: {
-    DEV_SSR: false,
+    DEV_SSR: true,
   }
 };
