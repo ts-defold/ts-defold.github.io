@@ -20,4 +20,4 @@ discovery.
 
 If you are creating your own template, you must name it `tsd-template-*` 
 where `*` is the shortname of the template. It is recommended that you also add 
-the `ts-defold-tempalte` topic to your repository.
+the `ts-defold-template` topic to your repository.
