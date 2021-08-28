@@ -2,7 +2,7 @@
 metadata:
   name: ts-defold
   short_name: ts-defold
-  description: "TypeScript <3 Defold"
+  description: "An awesome TypeScript toolkit for leveling-up Defold."
   language: en
   url: "https://ts-defold.dev"
   sentry: "https://3cd7808a26214f40b3e85e748370cee2@o918528.ingest.sentry.io/5932586"
