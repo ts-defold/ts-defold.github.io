@@ -5,14 +5,14 @@ import styled from '@emotion/styled';
 const JargonWrapper = styled.em`
   display: inline-block;
   .jargon-term {
-    text-decoration: underline dotted ${(props) => props.theme.colors.primary};
+    text-decoration: underline dotted ${(props) => props.theme.colors.violet};
     &::after {
       content: '?';
       font-weight: bold;
       display: inline-block;
       transform: translate(0, -0.5em);
       font-size: 75%;
-      color: ${(props) => props.theme.colors.primary};
+      color: ${(props) => props.theme.colors.violet};
       margin-left: 3px;
     }
     &:hover {
@@ -28,7 +28,7 @@ const JargonWrapper = styled.em`
         left: 0;
         background: ${(props) => props.theme.jargon.background};
         border: 1px solid ${(props) => props.theme.jargon.border};
-        border-left: 4px solid ${(props) => props.theme.colors.primary};
+        border-left: 4px solid ${(props) => props.theme.colors.violet};
         padding: 1rem;
         border-radius: 4px;
         font-size: 90%;
@@ -48,7 +48,7 @@ const JargonWrapper = styled.em`
             left: 0;
             right: 0;
             height: 0.5em;
-            border-top: 1px solid ${(props) => props.theme.colors.primary};
+            border-top: 1px solid ${(props) => props.theme.colors.violet};
             z-index: -1;
           }
         }
