@@ -49,7 +49,7 @@ sidebar:
       link: https://typescripttolua.github.io/
   ignoreIndex: false
 pwa:
-  enabled: true
+  enabled: false
   manifest:
     display: standalone
     crossOrigin: anonymous
