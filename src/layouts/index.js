@@ -133,6 +133,10 @@ class MDXLayout extends React.Component {
       gitBranch,
     } = data;
 
+
+    //! Hack: We build on a temp branch and it is picking the wrong branch from the plugin
+    const gitBranchHack = { ...gitBranch, name: 'main' };
+
     // meta tags
     const metaTitle = mdx.frontmatter.metaTitle;
     const docTitle = emoji.emojify(mdx.fields.title);
@@ -152,7 +156,7 @@ class MDXLayout extends React.Component {
                 mdx.frontmatter.editable === true) ? (
                 <EditOnRepo
                   location={docsLocation}
-                  branch={gitBranch.name}
+                  branch={gitBranchHack.name}
                   path={mdx.parent.relativePath}
                   repoType={docsLocationType}
                 />
