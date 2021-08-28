@@ -41,7 +41,6 @@ const logoStyle = (theme) => css`
     }
     &:hover {
       text-decoration: none;
-      opacity: 0.8;
     }
   }
 `;
