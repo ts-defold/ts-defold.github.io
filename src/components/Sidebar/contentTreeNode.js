@@ -23,8 +23,8 @@ const activeNode = (theme) => css`
     background-color: ${theme.navigationSidebar.row.active};
     color: ${theme.navigationSidebar.font.active} !important;
   }
-  > a:first-child,
-  button:first-child {
+  > a:first-of-type,
+  button:first-of-type {
     border-radius: 4px 0 0 4px;
   }
 `;
@@ -65,8 +65,8 @@ const NodeContent = styled(({ className, text, link, children }) => (
       color: ${(props) => props.theme.navigationSidebar.font.hover};
       background-color: ${(props) => props.theme.navigationSidebar.row.hover};
     }
-    > a:first-child,
-    > button:first-child {
+    > a:first-of-type,
+    > button:first-of-type {
       border-radius: 4px 0 0 4px;
     }
   }

@@ -7,7 +7,7 @@ import { X } from 'react-feather';
 import loadable from '@loadable/component';
 
 import { onMobile } from '../../styles/responsive';
-import { visibleMobile, shadowAround } from '../../styles';
+import { visibleMobile } from '../../styles';
 
 const Algolia = loadable(() => import('./algolia/'))
 const LocalSearch = loadable(() => import('./localsearch/'))
