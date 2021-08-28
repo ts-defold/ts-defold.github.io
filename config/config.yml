@@ -1,13 +1,13 @@
 ---
 metadata:
-  name: TS-DEFOLD
+  name: ts-defold
   short_name: ts-defold
-  description: "TypeScript :heart: Defold"
+  description: "TypeScript <3 Defold"
   language: en
   url: "https://ts-defold.dev"
   sentry: "https://3cd7808a26214f40b3e85e748370cee2@o918528.ingest.sentry.io/5932586"
   pathPrefix: "/"
-  siteImage: null
+  siteImage: "/assets/social.png"
   favicon: "/assets/favicon.png"
   themeColor: "#ff0000"
 header:
@@ -18,9 +18,6 @@ header:
   links:
     - text: Docs
       link: "/"
-      external: false
-    - text: Playground
-      link: "/playground"
       external: false
 sidebar:
   enabled: true
