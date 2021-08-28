@@ -75,7 +75,7 @@ function actOnClose(ref, onClose) {
   }, [ref]);
 }
 
-const Layout = ({ children, location }) => {
+const Layout = ({ children, location, minimal }) => {
   const [showSearch, setShowSearch] = useState(false);
   const [searchVisible, setSearchVisible] = useState(false);
   const [fullscreenMode, setFullScreenMode] = useState(false);
@@ -110,18 +110,20 @@ const Layout = ({ children, location }) => {
       ) : (
         ''
       )}
-      <MDXProvider components={MdxComponents}>
-        {config.features.scrollTop === true ? <ScrollTop /> : ''}
-        <Wrapper>
-          {config.sidebar.enabled === true ? (
-            <Sidebar show={! (config.features.fullScreenMode.hideSidebar && fullscreenMode)} location={location} css={hiddenMobile} />
-          ) : (
-            ''
-          )}
-          <Content>{children}</Content>
-          <TableOfContents show={! (config.features.fullScreenMode.hideToc && fullscreenMode)} location={location} css={hiddenTablet} />
-        </Wrapper>
-      </MDXProvider>
+      {minimal ? children : (
+        <MDXProvider components={MdxComponents}>
+          {config.features.scrollTop === true ? <ScrollTop /> : ''}
+          <Wrapper>
+            {config.sidebar.enabled === true ? (
+              <Sidebar show={! (config.features.fullScreenMode.hideSidebar && fullscreenMode)} location={location} css={hiddenMobile} />
+            ) : (
+              ''
+            )}
+            <Content>{children}</Content>
+            <TableOfContents show={! (config.features.fullScreenMode.hideToc && fullscreenMode)} location={location} css={hiddenTablet} />
+          </Wrapper>
+        </MDXProvider>
+      )}
     </ThemeProvider>
   );
 };

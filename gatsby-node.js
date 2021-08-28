@@ -67,16 +67,17 @@ exports.createPages = ({ graphql, actions }) => {
         }
         actions.createPage({
           path: `/404.html`,
-          component: path.join(process.cwd(), 'src/pages/404.js'),
+          component: path.resolve('./src/pages/404.js'),
         });
 
         // Create pages.
         result.data.allMdx.edges.forEach(({ node }) => {
           createPage({
             path: node.fields.slug ? node.fields.slug : '/',
-            component: path.resolve('./src/templates/docs.js'),
+            component: path.resolve('./src/layouts/index.js'),
             context: {
               id: node.fields.id,
+              docs: true,
             },
           });
         });

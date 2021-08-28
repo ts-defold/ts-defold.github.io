@@ -101,7 +101,18 @@ const LastUpdated = styled(({ className, time, name }) => {
   display: block;
 `;
 
-export default class MDXRuntimeTest extends React.Component {
+export default function DefaultLayout({ children, pageContext, ...props }) {
+  if (pageContext.docs === true) {
+    return <MDXLayout {...props}>{children}</MDXLayout>;
+  }
+  return (
+    <Layout minimal {...props}>
+      <ContentWrapper>{children}</ContentWrapper>
+    </Layout>
+  );
+}
+
+class MDXLayout extends React.Component {
   componentDidMount() {
     if (window.location.hash) {
       const element = document.getElementById(window.location.hash.substring(1));
@@ -111,7 +122,7 @@ export default class MDXRuntimeTest extends React.Component {
 
   render() {
     const { data } = this.props;
-    if (!data) {
+    if (!data || !data.mdx) {
       return null;
     }
     const {
@@ -129,12 +140,16 @@ export default class MDXRuntimeTest extends React.Component {
     return (
       <Layout {...this.props}>
         <Seo frontmatter={mdx.frontmatter} url={this.props.location.href} title={headTitle} />
-        
-        {mdx.frontmatter.hideTitle ? '' : (
-          <PageTitle>    
+
+        {mdx.frontmatter.hideTitle ? (
+          ''
+        ) : (
+          <PageTitle>
             <TitleWrapper>
               <Title>{docTitle}</Title>
-              {docsLocation && ((editable && mdx.frontmatter.editable !== false) || mdx.frontmatter.editable === true) ? (
+              {docsLocation &&
+              ((editable && mdx.frontmatter.editable !== false) ||
+                mdx.frontmatter.editable === true) ? (
                 <EditOnRepo
                   location={docsLocation}
                   branch={gitBranch.name}

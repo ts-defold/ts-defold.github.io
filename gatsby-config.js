@@ -17,12 +17,7 @@ const plugins = [
   'gatsby-plugin-twitter',
   'gatsby-plugin-sharp',
   'gatsby-plugin-sass',
-  {
-    resolve: `gatsby-plugin-layout`,
-    options: {
-      component: require.resolve(`./src/templates/docs.js`),
-    },
-  },
+  'gatsby-plugin-layout',
   'gatsby-plugin-emotion',
   'gatsby-plugin-remove-trailing-slashes',
   {
