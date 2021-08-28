@@ -32,7 +32,7 @@ const Header = (level, props) => {
   });
 };
 
-const Table = ({...props}) => (
+const Table = ({ ...props }) => (
   <div css={{ display: 'grid' }}>
     <div css={{ overflowX: 'auto' }}>
       <table css={table(useTheme())} {...props} />
@@ -70,17 +70,42 @@ export default {
   blockquote: (props) => <blockquote css={blockquote(useTheme())} {...props} />,
   p: (props) => <p className="paragraph" {...props} />,
   pre: (props) => <pre css={pre} {...props} />,
-  table: (props) => <Table {...props}/>,
+  table: (props) => <Table {...props} />,
   em: emphasis,
   img: (props) => (
     <a href={props.src} target="_blank" rel="noopener noreferrer">
-      <img loading={'lazy'} {...props} />
+      <img loading={'lazy'} alt={props.alt} {...props} />
     </a>
   ),
   code: CodeBlock,
   ul: (props) => <ul css={list} {...props} />,
   ol: (props) => <ol css={list} {...props} />,
   a: AnchorTag,
+  Center: (props) => (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        width: props.width,
+        height: props.height,
+      }}
+      {...props}
+    />
+  ),
+  HeroImage: (props) => (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        width: props.width,
+        height: props.height,
+      }}
+    >
+      <img alt={props.alt} {...props} />
+    </div>
+  ),
   Badge,
   Layout,
   Icon,
