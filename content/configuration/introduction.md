@@ -12,5 +12,5 @@ Familiarity with NodeJS and npm is encouraged, though not required.
 
 ## First Steps
 
-It is recommended that you go through the [Quick Start](/gettingstarted/quickstart) and [Project Generator](gettingstarted/cli) docs first, then find your way into the depths :hole: of the project configuration. 
+It is recommended that you go through the [Quick Start](/gettingstarted/quickstart) and [Project Generator](/gettingstarted/cli) docs first, then find your way into the depths :hole: of the project configuration. 
 
