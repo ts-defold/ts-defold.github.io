@@ -26,7 +26,7 @@ scope of the file.
     "name": "@ts-defold/tstl-export-as-global",
     "match": ".*script.ts$",
     "globals": { 
-        "functions": [ "init", "on_input", "on_message", "on_reload", "update", "final"]
+        "functions": [ "init", "on_input", "on_message", "on_reload", "update", "final" ]
     }
 }
 ```
@@ -43,7 +43,7 @@ used in the Defold _API_.
 Some of Defold's game objects are lua UserData objects that define metamethods of
  `__index` and `__len` that allow them to be treated like an array.  
  
- Types defined as `Array<T> & LuaUserdata` in the ***@ts-defold/types*** package 
+ Types defined as `Array<T> & LuaUserdata` in the [@ts-defold/types](https://www.npmjs.com/package/@ts-defold/types?activeTab=readme) package 
  are transformed to allow the `...` spread operator in arrays. This does not come 
  without some cost though, so be certain you want to copy the array data and not 
  just needlessly putting sugar on all the things.
