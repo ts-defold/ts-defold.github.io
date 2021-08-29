@@ -86,14 +86,41 @@ exports.createPages = ({ graphql, actions }) => {
   });
 };
 
-exports.onCreateWebpackConfig = ({ actions }) => {
+const resolve = (query) => path.resolve(__dirname, query);
+
+exports.onCreateWebpackConfig = ({ actions, stage }) => {
   actions.setWebpackConfig({
+    node: { fs: "empty" },
+    resolveLoader: {
+      // Don't generate worker files in server build, because it overrides client files
+      alias: stage.indexOf("html") >= 0 ? { "worker-loader": require.resolve("null-loader") } : {},
+    },
     resolve: {
       modules: [path.resolve(__dirname, 'src'), 'node_modules'],
       alias: {
         $components: path.resolve(__dirname, 'src/components'),
         buble: '@philpl/buble', // to reduce bundle size
+          
+        // Replace vendored monaco-typescript services build with typescript, already used by typescript-to-lua
+        [require.resolve("monaco-editor/esm/vs/language/typescript/lib/typescriptServices.js")]: 
+          require.resolve("typescript"),
+
+        // Exclude builtin monaco-typescript libs
+        [require.resolve("monaco-editor/esm/vs/language/typescript/lib/lib.js")]: 
+          resolve("src/pages/playground/lib/monaco-typescript-lib-stub.js"),
+
+        // Stub file resolution for playground
+        [require.resolve("typescript-to-lua/dist/transpilation/resolve.js")]:
+            resolve("src/pages/playground/lib/resolve-stub.js"),
       },
+    },
+    module: {
+      rules: [
+        {
+          test: /\.ttf$/,
+          use: ['file-loader']
+        }
+    ]
     },
   });
 };

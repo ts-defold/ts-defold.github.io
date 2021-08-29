@@ -19,6 +19,9 @@ header:
     - text: Docs
       link: "/"
       external: false
+    - text: Playground
+      link: "/playground"
+      external: false
 sidebar:
   enabled: true
   # forcedNavOrder:
