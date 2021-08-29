@@ -19,7 +19,7 @@ npm init @ts-defold ./project-name
 
 ### Project Structure
 
-BooGi CLI is creating following directory structure
+***@ts-defold/create*** templates follow this common directory structure
 
 ```bash
 ├─ .eslintrc             # Eslint configured to handle the caveats of tstl & ts-defold
