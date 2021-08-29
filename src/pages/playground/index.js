@@ -1,14 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
-import MonacoEditor from 'react-monaco-editor';
 import { useDebounceCallback } from '@react-hook/debounce';
-import { monaco } from "./monaco";
 
 export default function Monaco() {
   const ref = useRef(null);
   const [, setData] = useState({});
+  const [monacoEditor, setMonacoEditor] = useState(null);
 
   const updateModel = useDebounceCallback(async (model) => {
-      const getWorker = await monaco.languages.typescript.getTypeScriptWorker();
+      const getWorker = await monacoEditor.monaco.languages.typescript.getTypeScriptWorker();
       const client = (await getWorker(model.uri));
       const { lua, sourceMap } = await client.getTranspileOutput(model.uri.toString());
       const source = model.getValue();
@@ -16,7 +15,15 @@ export default function Monaco() {
   }, 250);
 
   useEffect(() => {
-    updateModel(ref.current.editor.getModel());
+    if (ref.current) updateModel(ref.current.editor.getModel());
+  }, [ref]);
+
+  useEffect(() => {
+    import("./monaco").then(({ monaco, getTheme }) => {
+      import('react-monaco-editor').then(({ default: MonacoEditor }) => {
+        setMonacoEditor({ MonacoEditor, monaco, getTheme });
+      });
+    });
   }, []);
 
   const options = {
@@ -28,14 +35,15 @@ export default function Monaco() {
 
   return (
     <div style={{ marginTop: '10px' }}>
-      <MonacoEditor
-        height="100vh"
-        theme="onedark"
-        language="typescript"
-        options={options}
-        onChange={() => updateModel(ref.current.editor.getModel())}
-        ref={ref}
-        defaultValue={`
+      {monacoEditor && (
+        <monacoEditor.MonacoEditor
+          height="100vh"
+          theme={monacoEditor.getTheme()}
+          language="typescript"
+          options={options}
+          onChange={() => updateModel(ref.current.editor.getModel())}
+          ref={ref}
+          defaultValue={`
 type Props = {
   value: string;
 };
@@ -43,8 +51,9 @@ type Props = {
 function test(this:Props) {
   print(this.value);
 }
-      `}      
-      />
+        `}      
+        />
+    )}
     </div>
   );
 }

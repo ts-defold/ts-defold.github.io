@@ -3,6 +3,9 @@ import { TypeScriptWorker } from "monaco-editor/esm/vs/language/typescript/tsWor
 import * as ts from "typescript";
 import * as tstl from "typescript-to-lua";
 
+require("path").parse = (x) => x;
+require("path").format = (x) => x;
+
 const libContext = require.context(`raw-loader!typescript-to-lua/dist/lualib`, true, /(.+)(?<!lualib_bundle)\.lua$/);
 const emitHost = {
     directoryExists: () => false,
@@ -22,11 +25,11 @@ const emitHost = {
 const transpiler = new tstl.Transpiler({ emitHost });
 
 export class CustomTypeScriptWorker extends TypeScriptWorker {
-    lastResult = null;
+    lastResult = undefined;
 
     async getTranspileOutput(fileName) {
-        const { lua, sourceMap } = this.transpileLua(fileName);
-        return { lua, sourceMap };
+        const { ast, lua, sourceMap } = this.transpileLua(fileName);
+        return { ast, lua, sourceMap };
     }
 
     async getSemanticDiagnostics(fileName) {
@@ -45,11 +48,10 @@ export class CustomTypeScriptWorker extends TypeScriptWorker {
         const compilerOptions = program.getCompilerOptions();
         compilerOptions.rootDir = "inmemory://model/";
         compilerOptions.luaLibImport = tstl.LuaLibImportKind.Inline;
-        compilerOptions.luaTarget = tstl.LuaTarget.Universal;
+        compilerOptions.luaTarget = tstl.LuaTarget.Lua53;
         compilerOptions.sourceMap = true;
 
-        let lua;
-        let sourceMap;
+        let ast, lua, sourceMap;
         const { diagnostics } = transpiler.emit({
             program,
             sourceFiles: [sourceFile],
@@ -58,9 +60,24 @@ export class CustomTypeScriptWorker extends TypeScriptWorker {
                 if (fileName.endsWith(".lua")) lua = data;
                 if (fileName.endsWith(".lua.map")) sourceMap = data;
             },
+            plugins: [
+                {
+                    visitors: {
+                        [ts.SyntaxKind.SourceFile](node, context) {
+                            const [file] = context.superTransformNode(node);
+
+                            if (node === sourceFile) {
+                                ast = file;
+                            }
+
+                            return file;
+                        },
+                    },
+                },
+            ],
         });
 
-        this.lastResult = { diagnostics, lua, sourceMap };
+        this.lastResult = { diagnostics, ast, lua, sourceMap };
         return this.lastResult;
     }
 }

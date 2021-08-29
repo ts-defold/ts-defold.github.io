@@ -102,12 +102,13 @@ exports.onCreateWebpackConfig = ({ actions, stage }) => {
         buble: '@philpl/buble', // to reduce bundle size
           
         // Replace vendored monaco-typescript services build with typescript, already used by typescript-to-lua
-        [require.resolve("monaco-editor/esm/vs/language/typescript/lib/typescriptServices.js")]: 
-          require.resolve("typescript"),
+        [require.resolve("monaco-editor/esm/vs/language/typescript/lib/typescriptServices.js")]:
+        require.resolve("typescript"),
 
         // Exclude builtin monaco-typescript libs
-        [require.resolve("monaco-editor/esm/vs/language/typescript/lib/lib.js")]: 
-          resolve("src/pages/playground/lib/monaco-typescript-lib-stub.js"),
+        [require.resolve("monaco-editor/esm/vs/language/typescript/lib/lib.js")]: resolve(
+            "src/pages/playground/lib/monaco-typescript-lib-stub.js",
+        ),
 
         // Stub file resolution for playground
         [require.resolve("typescript-to-lua/dist/transpilation/resolve.js")]:

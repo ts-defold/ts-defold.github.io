@@ -9,6 +9,11 @@ import theme from "./theme/one-dark.json"
 
 export { monaco };
 
+export function getTheme() {
+    return "onedark";
+}
+
+// TODO: MonacoEnvironment should be a var
 global.MonacoEnvironment = {
     getWorker(_workerId, label) {
         if (label === "typescript") {
@@ -36,10 +41,11 @@ addLibsFromContext(require.context("!!raw-loader!typescript/lib/", false, /lib(\
 
 // Add lua-types
 addLibsFromContext(require.context("!!raw-loader!lua-types/core/", true, /\.d\.ts$/));
+// TODO: Generate it from lua-types/special/5.3.d.ts
 for (const module of [
-    require("!!raw-loader!lua-types/special/5.1-only.d.ts"),
-    require("!!raw-loader!lua-types/special/5.1-or-jit.d.ts"),
-    require("!!raw-loader!lua-types/special/5.3-pre.d.ts"),
+    require("!!raw-loader!lua-types/special/5.2-plus.d.ts"),
+    require("!!raw-loader!lua-types/special/5.2-plus-or-jit.d.ts"),
+    require("!!raw-loader!lua-types/special/5.3-plus.d.ts"),
     require("!!raw-loader!lua-types/special/5.4-pre.d.ts"),
 ]) {
     monaco.languages.typescript.typescriptDefaults.addExtraLib(module.default);

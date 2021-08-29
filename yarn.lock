@@ -12533,13 +12533,6 @@ moment@^2.27.0:
   resolved "https://registry.npmjs.org/moment/-/moment-2.27.0.tgz"
   integrity sha512-al0MUK7cpIcglMv3YF13qSgdAIqxHTO7brRtaz3DlSULbqfazqkc5kEjNrLDOM7fsjshoFIihnU8snrP7zUvhQ==
 
-monaco-editor-webpack-plugin@^4.1.2:
-  version "4.1.2"
-  resolved "https://registry.yarnpkg.com/monaco-editor-webpack-plugin/-/monaco-editor-webpack-plugin-4.1.2.tgz#afea30e4e0374132f8f298d358c99efc2cad3e84"
-  integrity sha512-snmHecygICKT0UlHhva+Cs2WaLPpxy3111xbvInhjjTr5m0xQTFHlmJ2QQDcB14Vzmm7f07uc1TtbvOpmL50BA==
-  dependencies:
-    loader-utils "^2.0.0"
-
 monaco-editor@*:
   version "0.27.0"
   resolved "https://registry.yarnpkg.com/monaco-editor/-/monaco-editor-0.27.0.tgz#4b69108bb1dc1f60174c5dcdf51bc5306ab5ba26"
@@ -17638,10 +17631,10 @@ typescript-to-lua@^1.0.0:
     source-map "^0.7.3"
     typescript "~4.3.5"
 
-typescript@^4.3.4:
-  version "4.4.2"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.4.2.tgz#6d618640d430e3569a1dfb44f7d7e600ced3ee86"
-  integrity sha512-gzP+t5W4hdy4c+68bfcv0t400HVJMMd2+H9B7gae1nQlBzCqvrXX+6GL/b3GAgyTH966pzrZ70/fRjwAtZksSQ==
+typescript@4.3.4:
+  version "4.3.4"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.3.4.tgz#3f85b986945bcf31071decdd96cf8bfa65f9dcbc"
+  integrity sha512-uauPG7XZn9F/mo+7MrsRjyvbxFpzemRjKEZXS4AK83oP2KKOJPvb+9cO/gmnv8arWZvhnjVOXz7B49m1l0e9Ew==
 
 typescript@~4.3.2, typescript@~4.3.5:
   version "4.3.5"
