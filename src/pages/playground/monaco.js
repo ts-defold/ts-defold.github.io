@@ -13,7 +13,6 @@ export function getTheme() {
     return "onedark";
 }
 
-// TODO: MonacoEnvironment should be a var
 global.MonacoEnvironment = {
     getWorker(_workerId, label) {
         if (label === "typescript") {
@@ -35,17 +34,47 @@ function addLibsFromContext(context, pathPrefix) {
     }
 }
 
-// Add typescript libs
-addLibsFromContext(require.context("!!raw-loader!typescript/lib/", false, /lib(\.es(.+))?\.d\.ts$/));
-//monaco.languages.typescript.typescriptDefaults.addExtraLib(require("!!raw-loader!./execute/console.d.ts").default);
-
-// Add lua-types
-addLibsFromContext(require.context("!!raw-loader!lua-types/core/", true, /\.d\.ts$/));
-// TODO: Generate it from lua-types/special/5.3.d.ts
+// Add typescript libs es2019
 for (const module of [
-    require("!!raw-loader!lua-types/special/5.2-plus.d.ts"),
-    require("!!raw-loader!lua-types/special/5.2-plus-or-jit.d.ts"),
-    require("!!raw-loader!lua-types/special/5.3-plus.d.ts"),
+    require("!!raw-loader!typescript/lib/lib.es5.d.ts"),
+    require("!!raw-loader!typescript/lib/lib.es2015.core.d.ts"),
+    require("!!raw-loader!typescript/lib/lib.es2015.collection.d.ts"),
+    require("!!raw-loader!typescript/lib/lib.es2015.iterable.d.ts"),
+    require("!!raw-loader!typescript/lib/lib.es2015.generator.d.ts"),
+    require("!!raw-loader!typescript/lib/lib.es2015.promise.d.ts"),
+    require("!!raw-loader!typescript/lib/lib.es2015.proxy.d.ts"),
+    require("!!raw-loader!typescript/lib/lib.es2015.reflect.d.ts"),
+    require("!!raw-loader!typescript/lib/lib.es2015.symbol.d.ts"),
+    require("!!raw-loader!typescript/lib/lib.es2015.symbol.wellknown.d.ts"),
+    require("!!raw-loader!typescript/lib/lib.es2015.d.ts"),
+    require("!!raw-loader!typescript/lib/lib.es2016.array.include.d.ts"),
+    require("!!raw-loader!typescript/lib/lib.es2016.d.ts"),
+    require("!!raw-loader!typescript/lib/lib.es2017.object.d.ts"),
+    require("!!raw-loader!typescript/lib/lib.es2017.sharedmemory.d.ts"),
+    require("!!raw-loader!typescript/lib/lib.es2017.string.d.ts"),
+    require("!!raw-loader!typescript/lib/lib.es2017.intl.d.ts"),
+    require("!!raw-loader!typescript/lib/lib.es2017.typedarrays.d.ts"),
+    require("!!raw-loader!typescript/lib/lib.es2017.d.ts"),
+    require("!!raw-loader!typescript/lib/lib.es2018.asynciterable.d.ts"),
+    require("!!raw-loader!typescript/lib/lib.es2018.asyncgenerator.d.ts"),
+    require("!!raw-loader!typescript/lib/lib.es2018.promise.d.ts"),
+    require("!!raw-loader!typescript/lib/lib.es2018.regexp.d.ts"),
+    require("!!raw-loader!typescript/lib/lib.es2018.intl.d.ts"),
+    require("!!raw-loader!typescript/lib/lib.es2018.d.ts"),
+    require("!!raw-loader!typescript/lib/lib.es2019.array.d.ts"),
+    require("!!raw-loader!typescript/lib/lib.es2019.object.d.ts"),
+    require("!!raw-loader!typescript/lib/lib.es2019.string.d.ts"),
+    require("!!raw-loader!typescript/lib/lib.es2019.symbol.d.ts"),
+]) {
+    monaco.languages.typescript.typescriptDefaults.addExtraLib(module.default);
+}
+
+// Add lua-types for lua 5.1
+addLibsFromContext(require.context("!!raw-loader!lua-types/core/", true, /\.d\.ts$/));
+for (const module of [
+    require("!!raw-loader!lua-types/special/5.1-only.d.ts"),
+    require("!!raw-loader!lua-types/special/5.1-or-jit.d.ts"),
+    require("!!raw-loader!lua-types/special/5.3-pre.d.ts"),
     require("!!raw-loader!lua-types/special/5.4-pre.d.ts"),
 ]) {
     monaco.languages.typescript.typescriptDefaults.addExtraLib(module.default);
@@ -71,6 +100,10 @@ monaco.languages.typescript.typescriptDefaults.addExtraLib(
 monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
     ...monaco.languages.typescript.typescriptDefaults.getCompilerOptions(),
     strict: true,
+    module: "commonjs",
+    esModuleInterop: true,
+    noUnusedLocals: false,
+    noUnusedParameters: false,
 });
 
 // Set default theme

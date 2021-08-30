@@ -2,6 +2,8 @@ import * as worker from "monaco-editor/esm/vs/editor/editor.worker";
 import { TypeScriptWorker } from "monaco-editor/esm/vs/language/typescript/tsWorker";
 import * as ts from "typescript";
 import * as tstl from "typescript-to-lua";
+import exportPlugin from "@ts-defold/tstl-export-as-global";
+import userdataPlugin from "@ts-defold/tstl-userdata-sugar";
 
 require("path").parse = (x) => x;
 require("path").format = (x) => x;
@@ -47,9 +49,10 @@ export class CustomTypeScriptWorker extends TypeScriptWorker {
 
         const compilerOptions = program.getCompilerOptions();
         compilerOptions.rootDir = "inmemory://model/";
-        compilerOptions.luaLibImport = tstl.LuaLibImportKind.Inline;
-        compilerOptions.luaTarget = tstl.LuaTarget.Lua53;
+        compilerOptions.luaLibImport = tstl.LuaLibImportKind.Require;
+        compilerOptions.luaTarget = tstl.LuaTarget.Lua51;
         compilerOptions.sourceMap = true;
+        compilerOptions.noHeader = true;
 
         let ast, lua, sourceMap;
         const { diagnostics } = transpiler.emit({
@@ -61,6 +64,13 @@ export class CustomTypeScriptWorker extends TypeScriptWorker {
                 if (fileName.endsWith(".lua.map")) sourceMap = data;
             },
             plugins: [
+                exportPlugin({ 
+                    match: ".*",
+                    globals: { 
+                        functions: [ "init", "on_input", "on_message", "on_reload", "update", "final"],
+                    }
+                }),
+                userdataPlugin({}),
                 {
                     visitors: {
                         [ts.SyntaxKind.SourceFile](node, context) {

@@ -6,7 +6,7 @@ export default function Playground() {
     return (
       <>
         {!isSSR && (
-            <React.Suspense fallback={<div />}>
+            <React.Suspense fallback={<div>LOADING...</div>}>
                 <LazyPlayground />
             </React.Suspense>
       )}

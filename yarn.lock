@@ -2546,6 +2546,16 @@
   resolved "https://registry.npmjs.org/@tokenizer/token/-/token-0.3.0.tgz"
   integrity sha512-OvjF+z51L3ov0OyAU0duzsYuvO01PH7x4t6DJx+guahgTnBHkhJdG7soQeTSFLWN3efnHyibZ4Z8l2EuWwJN3A==
 
+"@ts-defold/tstl-export-as-global@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@ts-defold/tstl-export-as-global/-/tstl-export-as-global-1.0.0.tgz#0dc3a75b598cfade026585cb6c5f6baacd43efc3"
+  integrity sha512-UkUT8wUrSINRP7cBFmToNmtrm1F/1OQSgjvO5j95KismeO80luAtjXB5LlfmtjLE3jvku6b9bSkjZY0T8aRYtA==
+
+"@ts-defold/tstl-userdata-sugar@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@ts-defold/tstl-userdata-sugar/-/tstl-userdata-sugar-1.0.0.tgz#f9e7af0636b0376e0cb03335cb5e99e53c5ac110"
+  integrity sha512-2SLSKkIQwJOinKf+YrBTzz4fWv92k+fyyKaEeCv3pzs4WyZc66lGg0qSwOUIcjwUV9fttQYdOzpjhVKtdvSPHQ==
+
 "@ts-defold/types@^1.1.16":
   version "1.1.16"
   resolved "https://registry.yarnpkg.com/@ts-defold/types/-/types-1.1.16.tgz#873490fce54d9ddbab0f2da9f1b141d19306929d"
