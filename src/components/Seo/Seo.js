@@ -34,6 +34,8 @@ const Seo = ({ frontmatter, title, url }) => {
         name="twitter:creator"
         content={config.authorTwitterAccount ? config.authorTwitterAccount : ''}
       /> */}
+      {/* Web Monetization tags */}
+      {config.metadata.monetization && (<meta name="monetization" content={config.metadata.monetization} />)}
     </Helmet>
   );
 };
