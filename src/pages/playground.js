@@ -1,6 +1,6 @@
 import React from 'react'
 
-const LazyPlayground = React.lazy(() => import("./playground/index"));
+const LazyPlayground = React.lazy(() => import("../playground"));
 function Playground() {
     const isSSR = typeof window === "undefined";
     return (
