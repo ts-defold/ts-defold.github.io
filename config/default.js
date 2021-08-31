@@ -10,6 +10,7 @@ module.exports = {
     siteImage: null,
     favicon: '/assets/favicon.png',
     themeColor: '#',
+    monetization: '',
   },
   header: {
     logo: '',
