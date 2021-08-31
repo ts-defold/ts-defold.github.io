@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Helmet } from "react-helmet";
 const LazyPlayground = React.lazy(() => import("../playground"));
 function Playground() {
     const isSSR = typeof window === "undefined";
@@ -15,5 +15,10 @@ function Playground() {
 };
 
 export default function PlaygroundWrapper() {
-  return <Playground/>;
+  return (
+    <>
+      <Helmet title="Playground" />
+      <Playground/>
+    </>
+  );
 }
