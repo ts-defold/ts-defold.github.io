@@ -107,12 +107,12 @@ exports.onCreateWebpackConfig = ({ actions, stage }) => {
 
         // Exclude builtin monaco-typescript libs
         [require.resolve("monaco-editor/esm/vs/language/typescript/lib/lib.js")]: resolve(
-            "src/pages/playground/lib/monaco-typescript-lib-stub.js",
+            "src/playground/lib/monaco-typescript-lib-stub.js",
         ),
 
         // Stub file resolution for playground
         [require.resolve("typescript-to-lua/dist/transpilation/resolve.js")]:
-            resolve("src/pages/playground/lib/resolve-stub.js"),
+            resolve("src/playground/lib/resolve-stub.js"),
       },
     },
     module: {
