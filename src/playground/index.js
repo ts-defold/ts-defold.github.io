@@ -26,8 +26,11 @@ export default function Monaco() {
   }, []);
 
   return (
-    <ReflexContainer orientation="vertical" style={{ height: '90vh' }}>
-      <ReflexElement minSize={400} flex={0.4} propagateDimensions>
+    <ReflexContainer
+      orientation="vertical"
+      style={{ height: 'calc(100vh - var(--header-height))', marginTop: 'var(--header-margin)' }}
+    >
+      <ReflexElement minSize={400} propagateDimensions>
         <ReflexContainer orientation="horizontal">
           <ReflexElement minSize={27} propagateDimensions>
             <div className="handle" style={{ padding: '4px' }}>
@@ -47,19 +50,18 @@ export default function Monaco() {
 
           <ReflexSplitter style={splitterStyle} propagate />
 
-          <ReflexElement minSize={27} size={27} style={{ overflow: 'hidden' }}>
+          <ReflexElement minSize={27} size={27} flex={0} style={{ overflow: 'hidden' }}>
             <ReflexHandle className="handle" style={{ padding: '4px', cursor: 'grab' }}>
               LOG
             </ReflexHandle>
             <DefoldLog />
           </ReflexElement>
-
         </ReflexContainer>
       </ReflexElement>
 
-      <ReflexSplitter style={splitterStyle} />
+      <ReflexSplitter style={splitterStyle} propagate></ReflexSplitter>
 
-      <ReflexElement minSize={400} style={{ overflow: 'hidden' }} propagateDimensions>
+      <ReflexElement minSize={400} flex={0.55} style={{ overflow: 'hidden' }} propagateDimensions>
         <DefoldRuntime />
       </ReflexElement>
     </ReflexContainer>
@@ -243,9 +245,9 @@ const DefoldRuntime = ({ dimensions }) => {
           justifyContent: 'center',
           alignItems: 'center',
           padding: '4px',
-          outline: 'none'
+          outline: 'none',
         }}
-        onClick={() => window.$_codepad_$.restart() }
+        onClick={() => window.$_codepad_$.restart()}
         role="button"
         alt="Restart"
         tabIndex={-2}
@@ -285,9 +287,8 @@ const DefoldLog = () => {
         color: '#fff',
         fontFamily: 'monospace',
         fontSize: '12px',
-        padding: ' 4px 8px'
+        padding: ' 4px 8px',
       }}
-    >
-    </div>
+    ></div>
   );
-}
+};
