@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { Helmet } from 'react-helmet';
 import { MDXProvider } from '@mdx-js/react';
 import {
   Header,
@@ -88,6 +89,14 @@ const Layout = ({ children, location, minimal }) => {
     <ThemeProvider ref={themeProviderRef} darkModeConfig={config.features.darkMode}>
       {config.header.enabled === true ? (
         <>
+          <Helmet>
+            <style type="text/css">
+              {`body { 
+                --header-height: ${fullscreenMode ? 32 : 90}px;
+                --header-margin: ${fullscreenMode ? 32 : 0}px;
+              }`}
+            </style>
+          </Helmet>
           <div
             css={{
               zIndex: 20,
