@@ -3,7 +3,9 @@ import { ReflexContainer, ReflexElement, ReflexSplitter, ReflexHandle } from 're
 import { Helmet } from 'react-helmet';
 import MonacoEditor from 'react-monaco-editor';
 import { useDebounceCallback } from '@react-hook/debounce';
-import { RefreshCw } from 'react-feather';
+import { RefreshCw, Folder, Terminal } from 'react-feather';
+import TypescriptIcon from 'react-devicons/typescript/plain'
+import LuaIcon from 'react-devicons/lua/plain'
 import { monaco, getTheme } from './monaco';
 import snippets from './snippets';
 
@@ -33,7 +35,10 @@ export default function Monaco() {
       <ReflexElement minSize={400} propagateDimensions>
         <ReflexContainer orientation="horizontal">
           <ReflexElement minSize={27} propagateDimensions>
-            <div className="handle" style={{ padding: '4px' }}>
+            <div className="handle" style={{ padding: '4px', userSelect: 'none' }}>
+              <span style={{ verticalAlign: 'middle' }}>
+                <TypescriptIcon color="#a8b5d0" style={{ marginRight: '8px' }} />
+              </span>
               TYPESCRIPT
             </div>
             <MonacoEditorTSTL onChange={(lua) => setLua(lua)} />
@@ -43,6 +48,9 @@ export default function Monaco() {
 
           <ReflexElement minSize={27} flex={0.3} propagateDimensions>
             <ReflexHandle className="handle" style={{ padding: '4px', cursor: 'grab' }}>
+              <span style={{ verticalAlign: 'middle' }}>
+                <LuaIcon color="#a8b5d0" style={{ marginRight: '8px' }} />
+              </span>
               GENERATED LUA
             </ReflexHandle>
             <MonacoEditorLua src={lua} />
@@ -52,6 +60,9 @@ export default function Monaco() {
 
           <ReflexElement minSize={27} size={27} flex={0} style={{ overflow: 'hidden' }}>
             <ReflexHandle className="handle" style={{ padding: '4px', cursor: 'grab' }}>
+            <span style={{ verticalAlign: 'middle' }}>
+              {Terminal.render({ width: '16px', height: '16px', color: '#a8b5d0', style: { marginRight: '8px' } })}
+            </span>
               LOG
             </ReflexHandle>
             <DefoldLog />
@@ -64,6 +75,29 @@ export default function Monaco() {
       <ReflexElement minSize={400} flex={0.55} style={{ overflow: 'hidden' }} propagateDimensions>
         <DefoldRuntime />
       </ReflexElement>
+
+      {false && (<>
+        <ReflexSplitter
+          style={{
+            ...splitterStyle,
+            writingMode: 'vertical-rl',
+            minWidth: '28px',
+            color: '#a8b5d0',
+            backgroundColor: '#212835',
+            padding: '4px',
+            cursor: 'grab',
+            borderLeft: '2px solid #000',
+            borderRight: 'none',
+          }}
+        >
+          <span>
+            {Folder.render({ width: '16px', height: '16px', color: '#a8b5d0', style: { marginBottom: '8px' } })}
+          </span>
+          PROJECT
+        </ReflexSplitter>
+
+        <ReflexElement size={0} flex={0} style={{ overflow: 'hidden' }}></ReflexElement>
+      </>)}
     </ReflexContainer>
   );
 }
@@ -233,10 +267,10 @@ const DefoldRuntime = ({ dimensions }) => {
       <div
         style={{
           position: 'absolute',
-          bottom: '16px',
-          right: '16px',
-          width: '42px',
-          height: '42px',
+          top: '16px',
+          left: '16px',
+          width: '32px',
+          height: '32px',
           cursor: 'pointer',
           backgroundColor: '#111',
           borderRadius: '8px',
@@ -252,7 +286,7 @@ const DefoldRuntime = ({ dimensions }) => {
         alt="Restart"
         tabIndex={-2}
       >
-        {RefreshCw.render({ color: '#ffffffaa' })}
+        {RefreshCw.render({ width: '20px', height: '20px', color: '#ffffffaa' })}
       </div>
       <HelmetScripts />
     </div>
