@@ -5,13 +5,26 @@ import "monaco-editor/esm/vs/basic-languages/typescript/typescript.contribution"
 import "monaco-editor/esm/vs/language/typescript/monaco.contribution";
 import EditorWorker from "worker-loader?name=editor.worker.js!monaco-editor/esm/vs/editor/editor.worker.js";
 import TsWorker from "worker-loader?name=ts.worker.js!./ts.worker";
-import theme from "./theme/one-dark.json"
+import theme from "./themes/one-dark.json"
 
 export { monaco };
 
 export function getTheme() {
     return "onedark";
 }
+
+export function getOptions(readonly = false) {
+    return {
+      minimap: { enabled: false },
+      automaticLayout: true,
+      scrollbar: { useShadows: false },
+      fixedOverflowWidgets: true,
+      wordWrap: 'on',
+      readOnly: readonly,
+      fontFamily: 'dm, Dank Mono, Operator Mono, Menlo, monospace',
+      fontLigatures: true,
+    };
+  }
 
 global.MonacoEnvironment = {
     getWorker(_workerId, label) {
