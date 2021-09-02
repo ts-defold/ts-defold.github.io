@@ -10,7 +10,7 @@ export default function MonacoEditorLua({ dimensions, src }) {
   }, [ref, src]);
 
   const { width, height } = dimensions;
-  const options = getOptions();
+  const options = getOptions(true);
 
   return (
     <MonacoEditor
