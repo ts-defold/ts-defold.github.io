@@ -138,6 +138,8 @@ const MonacoEditorTSTL = ({ dimensions, onChange }) => {
     scrollbar: { useShadows: false },
     fixedOverflowWidgets: true,
     wordWrap: 'on',
+    fontFamily: 'dm, Dank Mono, Operator Mono, Menlo, monospace',
+    fontLigatures: true,
   };
 
   return (
@@ -169,6 +171,8 @@ const MonacoEditorLua = ({ dimensions, src }) => {
     fixedOverflowWidgets: true,
     wordWrap: 'on',
     readOnly: true,
+    fontFamily: 'dm, Dank Mono, Operator Mono, Menlo, monospace',
+    fontLigatures: true,
   };
 
   return (
