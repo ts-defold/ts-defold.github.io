@@ -14841,6 +14841,15 @@ react-feather@2.0.8:
   dependencies:
     prop-types "^15.7.2"
 
+react-folder-tree@^5.0.3:
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/react-folder-tree/-/react-folder-tree-5.0.3.tgz#586c28f26b1a5340e5a36c22d71f4067f5026f48"
+  integrity sha512-rCrojPpvJJZPzU9SrAEpcc/I2XddZ1eQ7wOnFPWHesZ9KQWehptm5QEbCw+eWRapDK+t8Nb/TVRPfE+oX0jVSA==
+  dependencies:
+    prop-types "^15.7.2"
+    react-icons "^4.1.0"
+    use-tree-state "^1.0.0"
+
 react-helmet@6.1.0:
   version "6.1.0"
   resolved "https://registry.npmjs.org/react-helmet/-/react-helmet-6.1.0.tgz"
@@ -14864,6 +14873,11 @@ react-hot-loader@^4.12.21:
     react-lifecycles-compat "^3.0.4"
     shallowequal "^1.1.0"
     source-map "^0.7.3"
+
+react-icons@^4.1.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-4.2.0.tgz#6dda80c8a8f338ff96a1851424d63083282630d0"
+  integrity sha512-rmzEDFt+AVXRzD7zDE21gcxyBizD/3NqjbX6cmViAgdqfJ2UiLer8927/QhhrXQV7dEj/1EGuOTPp7JnLYVJKQ==
 
 react-id-generator@3.0.1:
   version "3.0.1"
@@ -18153,6 +18167,11 @@ url@^0.11.0:
   dependencies:
     punycode "1.3.2"
     querystring "0.2.0"
+
+use-tree-state@^1.0.0:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/use-tree-state/-/use-tree-state-1.1.1.tgz#229c0eb1019c382c446506b474f676ecfedd7b11"
+  integrity sha512-oNLnmUaAef97UGvw83L0tfTYj7ZBmPdf3tsaehr8FumSdq9Th/cc97jVTnSoOCoq9wYmhDuSffJxHv+wbgUlrA==
 
 use@^3.1.0:
   version "3.1.1"

@@ -77,30 +77,28 @@ export default function Monaco() {
         <DefoldRuntime />
       </ReflexElement>
 
-      {false && (<>
-        <ReflexSplitter
-          style={{
-            ...splitterStyle,
-            writingMode: 'vertical-rl',
-            minWidth: '28px',
-            color: '#a8b5d0',
-            backgroundColor: '#212835',
-            padding: '4px',
-            cursor: 'grab',
-            borderLeft: '2px solid #000',
-            borderRight: 'none',
-          }}
-        >
-          <span>
-            {Folder.render({ width: '16px', height: '16px', color: '#a8b5d0', style: { marginBottom: '8px' } })}
-          </span>
-          PROJECT
-        </ReflexSplitter>
+      <ReflexSplitter
+        style={{
+          ...splitterStyle,
+          writingMode: 'vertical-rl',
+          minWidth: '28px',
+          color: '#a8b5d0',
+          backgroundColor: '#212835',
+          padding: '4px',
+          cursor: 'grab',
+          borderLeft: '2px solid #000',
+          borderRight: 'none',
+        }}
+      >
+        <span>
+          {Folder.render({ width: '16px', height: '16px', color: '#a8b5d0', style: { marginBottom: '8px' } })}
+        </span>
+        PROJECT
+      </ReflexSplitter>
 
-        <ReflexElement size={0} flex={0} style={{ overflow: 'hidden' }}>
-          <ProjectDetails />
-        </ReflexElement>
-      </>)}
+      <ReflexElement size={0} flex={0} style={{ overflow: 'hidden' }}>
+        <ProjectDetails />
+      </ReflexElement>
       
     </ReflexContainer>
   );
