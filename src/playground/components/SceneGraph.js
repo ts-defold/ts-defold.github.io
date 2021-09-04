@@ -19,7 +19,7 @@ const mapGraphToTree = (graph) => {
 
   const tree = {
     name: graph.name,
-    isOpen: false,
+    isOpen: ['collectionc', 'goc'].includes(type),
     type,
     children: showProps ? Object.keys(graph.payload).map((key) => ({
       name: `${key}: ${graph.payload[key].toString()}`,
@@ -31,7 +31,7 @@ const mapGraphToTree = (graph) => {
     tree.children.push({
       name,
       type: payload.type,
-      isOpen: false,
+      isOpen: ['collectionc', 'goc'].includes(type),
       children: children.map(mapGraphToTree),
     });
   });
@@ -94,7 +94,8 @@ export default function SceneGraph() {
       {sceneGraph && (
         <FolderTree
           iconComponents={iconComponents}
-          initOpenStatus='closed'
+          initOpenStatus='custom'
+          indentPixels={8}
           data={sceneGraph}
           showCheckbox={false}
           readOnly={true}
