@@ -73,8 +73,8 @@ const TextInput = styled.input`
 
   &:focus {
     outline: none;
-    border-bottom: 1px solid #fff;
-    color: #fff;
+    border-bottom: 1px solid #e9b684;
+    color: #e9b684;
   }
 `;
 
@@ -93,9 +93,9 @@ const TextArea = styled.textarea`
 
   &:focus {
     outline: none;
-    border-bottom: 1px solid #fff;
-    border-right: 1px solid #fff;
-    color: #fff;
+    border-bottom: 1px solid #e9b684;
+    border-right: 1px solid #e9b684;
+    color: #e9b684;
   }
 `;
 
@@ -123,8 +123,8 @@ const Select = styled.select`
 
   &:focus {
     outline: none;
-    border-bottom: 1px solid #fff;
-    color: #fff;
+    border-bottom: 1px solid #e9b684;
+    color: #e9b684;
   }
 
   &::after {
