@@ -1,21 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 
-export default function DefoldLog() {
+export default function DefoldLog({ log }) {
   const ref = useRef();
 
   useEffect(() => {
-    const logInterval = setInterval(() => {
-      if (window.$_codepad_$) {
-        window.$_codepad_$.onLog = (log) => {
-          if (ref.current) {
-            ref.current.innerHTML = log;
-          }
-        };
-        clearInterval(logInterval);
-      }
-    }, 100);
-    return () => clearInterval(logInterval);
-  }, [ref]);
+    if (ref.current && log) ref.current.innerHTML = log;
+  }, [ref, log]);
 
   return (
     <div

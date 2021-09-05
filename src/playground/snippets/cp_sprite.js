@@ -1,4 +1,4 @@
-export default `
+export default `// GO + Sprite
 type Props = {
   key: string;
   distance: number;

@@ -39,24 +39,12 @@ const mapGraphToTree = (graph) => {
   return tree;
 };
 
-export default function SceneGraph() {
+export default function SceneGraph({ graph }) {
   const [sceneGraph, setSceneGraph] = useState(null);
 
   useEffect(() => {
-    const graphInterval = setInterval(() => {
-      if (window.$_codepad_$) {
-        const defaultOnGraph = window.$_codepad_$.onGraph;
-        window.$_codepad_$.onGraph = (graph) => {
-          defaultOnGraph(graph);
-          if (window.$_codepad_$.data.graph) {
-            setSceneGraph(mapGraphToTree(window.$_codepad_$.data.graph));
-          }
-        };
-        clearInterval(graphInterval);
-      }
-    }, 100);
-    return () => clearInterval(graphInterval);
-  }, []);
+    if (graph) setSceneGraph(mapGraphToTree(graph));      
+  }, [graph]);
 
   const iconStyle = { verticalAlign: 'middle', padding: '2px', paddingRight: '6px' };
   const CaretRightIcon = ({ onClick: defaultOnClick }) => (

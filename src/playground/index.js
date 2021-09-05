@@ -1,30 +1,140 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { ReflexContainer, ReflexElement, ReflexSplitter, ReflexHandle } from 'react-reflex';
 import { Folder, Terminal } from 'react-feather';
-import TypescriptIcon from 'react-devicons/typescript/plain'
-import LuaIcon from 'react-devicons/lua/plain'
+import TypescriptIcon from 'react-devicons/typescript/plain';
+import LuaIcon from 'react-devicons/lua/plain';
 import DefoldLog from './components/DefoldLog';
-import DefoldRuntime from "./components/DefoldRuntime";
+import DefoldRuntime from './components/DefoldRuntime';
 import MonacoEditorLua from './components/MonacoEditorLua';
 import MonacoEditorTSTL from './components/MonacoEditorTSTL';
 import ProjectDetails from './components/ProjectDetails';
+import { useSerializeProject, useDeserializeProject } from './hooks/serialize';
+import { useDefoldApi } from './hooks/defold';
 
+import snippets from './snippets';
 import 'react-reflex/styles.css';
 
 const splitterStyle = { borderColor: '#000', zIndex: 'unset' };
 
-export default function Monaco() {
+export default function Playground({ location }) {
+  const [src, setSrc] = useState('');
   const [lua, setLua] = useState('');
+  const [diagnostics, setDiagnostics] = useState(null);
+  const [graph, setGraph] = useState(null);
+  const [scenes, setScenes] = useState([]);
+  const [log, setLog] = useState('');
+  const [pendingScene, setPendingScene] = useState('');
+  const [project, setProject] = useState(null);
 
+  const [hash, serializeProject] = useSerializeProject();
+  const [template, deserializeProject] = useDeserializeProject();
+
+  const onReady = useCallback(
+    (scenes, setScene) => {
+      setScenes(scenes);
+      const scene = scenes.find((scene) => scene.id === project.scene);
+      setScene(scene ? scene.id : scenes[0].id);
+    },
+    [project]
+  );
+
+  const onGraph = useCallback(
+    (graph) => {
+      setGraph(graph);
+    },
+    [setGraph]
+  );
+
+  const onLog = useCallback(
+    (log) => {
+      setLog(log);
+    },
+    [setLog]
+  );
+
+  const [ready, setReady] = useDefoldApi({ onReady, onGraph, onLog });
+
+  // Setup initial project data
   useEffect(() => {
-    const readyInterval = setInterval(() => {
-      if (window.$_codepad_$) {
-        window.$_codepad_$.ready();
-        clearInterval(readyInterval);
-      }
-    }, 100);
-    return () => clearInterval(readyInterval);
+    const projectHash = location.hash.split('=')[1];
+    deserializeProject(projectHash, {
+      name: '',
+      description: '',
+      scene: '#cp_sprite',
+      src: snippets('#cp_sprite'),
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Load the project and set the project src
+  useEffect(() => {
+    if (template) {
+      setSrc(template.src);
+      setProject(template);
+    }
+  }, [template]);
+
+  // Update the lua src and set defold engine ready
+  useEffect(() => {
+    if (lua) {
+      if (ready) {
+        if (diagnostics && diagnostics.length == 0) {
+          window.$_codepad_$.setCode(lua, true);
+        }
+      } else {
+        window.$_codepad_$.setCode(lua, false);
+        setReady(true);
+      }
+    }
+  }, [lua, diagnostics, ready, setReady]);
+
+  // Update the hash in the url (do not push history)
+  useEffect(() => {
+    if (hash) {
+      const current = new URL(window.location.href);
+      current.hash = '';
+      window.location.replace(current.href + `#project=${hash}`);
+    }
+  }, [hash]);
+
+  // Execute state changes when the src has been compiled
+  const onSrcChange = useCallback(
+    ({ src, lua, diagnostics }) => {
+      setLua(lua);
+      setDiagnostics(diagnostics);
+      if (project) serializeProject({ ...project, src });
+      if (pendingScene) {
+        window.$_codepad_$.setCode(lua, false);
+        window.$_codepad_$.setScene(project.scene);
+        setPendingScene(''); 
+      }
+    },
+    [project, pendingScene, serializeProject]
+  );
+
+  // Update project info & Serialize hash
+  const onDetailsChange = useCallback(
+    ({ name, description }) => {
+      if (project) {
+        serializeProject({ ...project, name, description });
+      }
+    },
+    [project, serializeProject]
+  );
+
+  // Update selected scene
+  const onSceneChange = useCallback(
+    ({ scene }) => {
+      setPendingScene(scene);
+      deserializeProject(undefined, {
+        name: '',
+        description: '',
+        scene: scene,
+        src: snippets(scene),
+      });
+    },
+    [deserializeProject]
+  );
 
   return (
     <ReflexContainer
@@ -33,7 +143,6 @@ export default function Monaco() {
     >
       <ReflexElement minSize={400} propagateDimensions>
         <ReflexContainer orientation="horizontal">
-
           <ReflexElement minSize={27} propagateDimensions>
             <div className="handle" style={{ padding: '4px', userSelect: 'none' }}>
               <span style={{ verticalAlign: 'middle' }}>
@@ -41,7 +150,7 @@ export default function Monaco() {
               </span>
               TYPESCRIPT
             </div>
-            <MonacoEditorTSTL onChange={(lua) => setLua(lua)} />
+            <MonacoEditorTSTL src={src} onChange={onSrcChange} />
           </ReflexElement>
 
           <ReflexSplitter style={splitterStyle} propagate />
@@ -60,14 +169,18 @@ export default function Monaco() {
 
           <ReflexElement minSize={27} size={27} flex={0} style={{ overflow: 'hidden' }}>
             <ReflexHandle className="handle" style={{ padding: '4px', cursor: 'grab' }}>
-            <span style={{ verticalAlign: 'middle' }}>
-              {Terminal.render({ width: '16px', height: '16px', color: '#a8b5d0', style: { marginRight: '8px' } })}
-            </span>
+              <span style={{ verticalAlign: 'middle' }}>
+                {Terminal.render({
+                  width: '16px',
+                  height: '16px',
+                  color: '#a8b5d0',
+                  style: { marginRight: '8px' },
+                })}
+              </span>
               LOG
             </ReflexHandle>
-            <DefoldLog />
+            <DefoldLog log={log} />
           </ReflexElement>
-
         </ReflexContainer>
       </ReflexElement>
 
@@ -91,18 +204,25 @@ export default function Monaco() {
         }}
       >
         <span>
-          {Folder.render({ width: '16px', height: '16px', color: '#a8b5d0', style: { marginBottom: '8px' } })}
+          {Folder.render({
+            width: '16px',
+            height: '16px',
+            color: '#a8b5d0',
+            style: { marginBottom: '8px' },
+          })}
         </span>
         PROJECT
       </ReflexSplitter>
 
       <ReflexElement size={0} flex={0} style={{ overflow: 'hidden' }}>
-        <ProjectDetails />
+        <ProjectDetails
+          project={project}
+          scenes={scenes}
+          graph={graph}
+          onDetailsChange={onDetailsChange}
+          onSceneChange={onSceneChange}
+        />
       </ReflexElement>
-      
     </ReflexContainer>
   );
 }
-
-
-
