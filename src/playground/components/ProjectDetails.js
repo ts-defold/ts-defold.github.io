@@ -29,7 +29,7 @@ export default function ProjectDetails({
     ),
     250
   );
-  
+
   useEffect(() => {
     if (project) {
       setName(project.name);
@@ -86,20 +86,23 @@ export default function ProjectDetails({
         <Label>Graph: </Label>
         <SceneGraph graph={graph} />
       </Field>
-      <Footer>
-        <div style={{ minWidth: '100px', padding: '8px', textAlign: 'center' }}>
-          <span style={{ verticalAlign: 'middle', paddingRight: '6px' }}>
-            <Share2 size={18} />
-          </span>
-          Share
-        </div>
-        <div style={{ minWidth: '100px', padding: '8px', textAlign: 'center' }}>
-          <span style={{ verticalAlign: 'middle', paddingRight: '6px' }}>
-            <Download size={18} />
-          </span>
-          Save
-        </div>
-      </Footer>
+      {(<></>) ||
+      (
+        <Footer>
+          <div style={{ minWidth: '100px', padding: '8px', textAlign: 'center' }}>
+            <span style={{ verticalAlign: 'middle', paddingRight: '6px' }}>
+              <Share2 size={18} />
+            </span>
+            Share
+          </div>
+          <div style={{ minWidth: '100px', padding: '8px', textAlign: 'center' }}>
+            <span style={{ verticalAlign: 'middle', paddingRight: '6px' }}>
+              <Download size={18} />
+            </span>
+            Save
+          </div>
+        </Footer>
+      )}
     </Details>
   );
 }
