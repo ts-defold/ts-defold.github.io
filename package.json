@@ -31,7 +31,7 @@
     "@sentry/gatsby": "^6.11.0",
     "@ts-defold/tstl-export-as-global": "^1.0.0",
     "@ts-defold/tstl-userdata-sugar": "^1.0.0",
-    "@ts-defold/types": "^1.1.16",
+    "@ts-defold/types": "^1.2.1",
     "algoliasearch": "4.4.0",
     "browserify-zlib": "^0.2.0",
     "buffer": "^6.0.3",
