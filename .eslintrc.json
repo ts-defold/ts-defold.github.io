@@ -7,7 +7,7 @@
     "prettier",
     "prettier/react"
   ],
-  "plugins": ["react", "import", "jsx-a11y"],
+  "plugins": ["react", "react-hooks", "import", "jsx-a11y"],
   "settings": {
     "react": {
       "version": "detect"
@@ -16,6 +16,8 @@
   "rules": {
     "react/prop-types": 0,
     "react/react-in-jsx-scope": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
     "lines-between-class-members": ["error", "always"],
     "padding-line-between-statements": "off",
     "import/no-unresolved": "off",
