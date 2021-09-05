@@ -2556,12 +2556,12 @@
   resolved "https://registry.npmjs.org/@ts-defold/tstl-userdata-sugar/-/tstl-userdata-sugar-1.0.0.tgz"
   integrity sha512-2SLSKkIQwJOinKf+YrBTzz4fWv92k+fyyKaEeCv3pzs4WyZc66lGg0qSwOUIcjwUV9fttQYdOzpjhVKtdvSPHQ==
 
-"@ts-defold/types@^1.1.16":
-  version "1.1.16"
-  resolved "https://registry.npmjs.org/@ts-defold/types/-/types-1.1.16.tgz"
-  integrity sha512-kJLtVlAM653QY15BpfqiMhyu/0vqcdK1iefV+v3M/K3oX4l9IM+9kx7ZF9YSYwAIXdnUY2SNf0L/FuK/2o93IA==
+"@ts-defold/types@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@ts-defold/types/-/types-1.2.1.tgz#1e6473c3d217c2fb30024cbd0a8b8fcea443b924"
+  integrity sha512-EZwN2g4tN0pwvweGsqlClE+WYMWJ1oe/aDUARBbWxcnMhHtFUyWMjjA3SoVC1v0Gqs3sSjb7BaQFR9zFGsasvQ==
   dependencies:
-    lua-types "2.8.0"
+    lua-types "^2.10.1"
 
 "@turist/fetch@^7.1.7":
   version "7.1.7"
@@ -11941,11 +11941,6 @@ lru-queue@^0.1.0:
   integrity sha1-Jzi9nw089PhEkMVzbEhpmsYyzaM=
   dependencies:
     es5-ext "~0.10.2"
-
-lua-types@2.8.0:
-  version "2.8.0"
-  resolved "https://registry.npmjs.org/lua-types/-/lua-types-2.8.0.tgz"
-  integrity sha512-FJY32giHIqD/XW1XGkJnl8XotXIJsJ2M42fj9A2UudttWA6orJioToW1OpgPdayTr+S1/oTO7i+hfBY3UVG8Fg==
 
 lua-types@^2.10.1:
   version "2.10.1"
