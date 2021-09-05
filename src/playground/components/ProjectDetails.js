@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import SceneGraph from './SceneGraph';
 import styled from '@emotion/styled';
 import { Share2, Download } from 'react-feather';
+import { useDebounceCallback } from '@react-hook/debounce';
 
 export default function ProjectDetails({
   onShareClick,
@@ -19,38 +20,60 @@ export default function ProjectDetails({
   const [description, setDescription] = useState(project ? project.description : '');
   const [selectedScene, setSelectedScene] = useState(project ? project.scene : '');
 
+  const debounceDetailsChange = useDebounceCallback(
+    useCallback(
+      ({ name, description }) => {
+        if (onDetailsChange) onDetailsChange({ name, description });
+      },
+      [onDetailsChange]
+    ),
+    250
+  );
+  
   useEffect(() => {
     if (project) {
       setName(project.name);
       setDescription(project.description);
       setSelectedScene(project.scene);
     }
-  }, [project])
+  }, [project]);
 
   useEffect(() => {
     if (project && selectedScene && selectedScene !== project.scene) {
-      if (onSceneChange) onSceneChange(project.scene);
+      if (onSceneChange) onSceneChange({ scene: selectedScene });
     }
-  }, [project, selectedScene, onSceneChange])
+  }, [project, selectedScene, onSceneChange]);
 
   useEffect(() => {
-    if (onDetailsChange) onDetailsChange({ name, description });
-  }, [name, description, onDetailsChange])
+    debounceDetailsChange({ name, description });
+  }, [name, description, debounceDetailsChange]);
 
   return (
     <Details>
       <Field>
         <Label>Project: </Label>
-        <TextInput name="project-name" type="text" placeholder="Project Name" value={name} onChange={(e) => setName(e.target.value)} />
+        <TextInput
+          name="project-name"
+          type="text"
+          placeholder="Project Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
       </Field>
       <Field>
         <Label>Description: </Label>
-        <TextArea cols={20} rows={5} placeholder="Project Description" value={description} onChange={(e) => setDescription(e.target.value)} />
+        <TextArea
+          cols={20}
+          rows={5}
+          placeholder="Project Description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
       </Field>
       <Field>
         <Label>Scene: </Label>
         <SelectWrapper>
-          <Select defaultValue={selectedScene}>
+          <Select value={selectedScene} onChange={(e) => setSelectedScene(e.target.value)}>
             {scenes.map((s) => (
               <option key={s.id} value={s.id}>
                 {s.name}

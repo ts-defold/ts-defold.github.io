@@ -23,6 +23,7 @@ export default function Playground({ location }) {
   const [graph, setGraph] = useState(null);
   const [scenes, setScenes] = useState([]);
   const [log, setLog] = useState('');
+  const [pendingScene, setPendingScene] = useState('');
   const [project, setProject] = useState(null);
 
   const [hash, serializeProject] = useSerializeProject();
@@ -60,12 +61,12 @@ export default function Playground({ location }) {
       name: '',
       description: '',
       scene: '#cp_sprite',
-      src: snippets[0],
+      src: snippets('#cp_sprite'),
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Load the project and set defold engine ready
+  // Load the project and set the project src
   useEffect(() => {
     if (template) {
       setSrc(template.src);
@@ -96,14 +97,19 @@ export default function Playground({ location }) {
     }
   }, [hash]);
 
-  // Serialize the project to a shareable hash
-  const onChange = useCallback(
+  // Execute state changes when the src has been compiled
+  const onSrcChange = useCallback(
     ({ src, lua, diagnostics }) => {
       setLua(lua);
       setDiagnostics(diagnostics);
       if (project) serializeProject({ ...project, src });
+      if (pendingScene) {
+        window.$_codepad_$.setCode(lua, false);
+        window.$_codepad_$.setScene(project.scene);
+        setPendingScene(''); 
+      }
     },
-    [project, serializeProject]
+    [project, pendingScene, serializeProject]
   );
 
   // Update project info & Serialize hash
@@ -114,6 +120,20 @@ export default function Playground({ location }) {
       }
     },
     [project, serializeProject]
+  );
+
+  // Update selected scene
+  const onSceneChange = useCallback(
+    ({ scene }) => {
+      setPendingScene(scene);
+      deserializeProject(undefined, {
+        name: '',
+        description: '',
+        scene: scene,
+        src: snippets(scene),
+      });
+    },
+    [deserializeProject]
   );
 
   return (
@@ -130,7 +150,7 @@ export default function Playground({ location }) {
               </span>
               TYPESCRIPT
             </div>
-            <MonacoEditorTSTL src={src} onChange={onChange} />
+            <MonacoEditorTSTL src={src} onChange={onSrcChange} />
           </ReflexElement>
 
           <ReflexSplitter style={splitterStyle} propagate />
@@ -200,6 +220,7 @@ export default function Playground({ location }) {
           scenes={scenes}
           graph={graph}
           onDetailsChange={onDetailsChange}
+          onSceneChange={onSceneChange}
         />
       </ReflexElement>
     </ReflexContainer>
