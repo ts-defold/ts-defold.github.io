@@ -55,7 +55,7 @@ export default function Playground({ location }) {
 
   // Setup initial project data
   useEffect(() => {
-    const projectHash = location.hash.split('=')[1] || localStorage.getItem('active');
+    const projectHash = location.hash.split('=')[1];
     deserializeProject(projectHash, {
       name: '',
       description: '',
@@ -90,7 +90,6 @@ export default function Playground({ location }) {
   // Update the hash in the url (do not push history)
   useEffect(() => {
     if (hash) {
-      localStorage.setItem('active', hash);
       const current = new URL(window.location.href);
       current.hash = '';
       window.location.replace(current.href + `#project=${hash}`);
