@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import CompressionWorker from "worker-loader?name=compression.worker.js!./compression.worker";
+import { useEffect, useState } from 'react';
+import CompressionWorker from 'worker-loader?name=compression.worker.js!./compression.worker';
 
 export function useSerializeProject() {
   const [worker, setWorker] = useState(null);
@@ -8,19 +8,21 @@ export function useSerializeProject() {
 
   useEffect(() => {
     setWorker(new CompressionWorker());
-    return () => worker.terminate();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    return () => {
+      if (worker) worker.terminate();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     if (worker && project) {
       worker.postMessage({
-        type: "compress",
+        type: 'compress',
         data: JSON.stringify(project),
       });
 
-      worker.onmessage = event => {
-        if (event.data.type === "compressed" && event.data.data) {
+      worker.onmessage = (event) => {
+        if (event.data.type === 'compressed' && event.data.data) {
           setSerializedProject(event.data.data);
         }
       };
@@ -37,7 +39,9 @@ export function useDeserializeProject() {
 
   useEffect(() => {
     setWorker(new CompressionWorker());
-    return () => worker.terminate();
+    return () => {
+      if (worker) worker.terminate();
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -45,30 +49,33 @@ export function useDeserializeProject() {
     if (worker && project) {
       if (project.project) {
         worker.postMessage({
-          type: "decompress",
+          type: 'decompress',
           data: project.project,
         });
-      
-        worker.onmessage = event => {
-          if (event.data.type === "decompressed") {
+
+        worker.onmessage = (event) => {
+          if (event.data.type === 'decompressed') {
             let payload = project.fallback;
             if (!event.data.err && event.data.data) {
               try {
                 payload = JSON.parse(event.data.data);
-              } catch (e) { void e;}
-              
+              } catch (e) {
+                void e;
+              }
+
               // Ensure the deserialized project is valid
-              const keys = Object.keys(project.fallback).filter(key => payload[key] !== undefined);
+              const keys = Object.keys(project.fallback).filter(
+                (key) => payload[key] !== undefined
+              );
               if (Object.keys(payload).length != keys.length) {
                 payload = project.fallback;
               }
 
               setDeserializedProject(payload);
             }
-          };
-        }
-      }
-      else {
+          }
+        };
+      } else {
         setDeserializedProject(project.fallback);
       }
     }
