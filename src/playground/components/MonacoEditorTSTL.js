@@ -1,12 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import MonacoEditor from 'react-monaco-editor';
 import { useDebounceCallback } from '@react-hook/debounce';
 import { monaco, getTheme, getOptions } from '../monaco';
-import snippets from '../snippets';
 
-export default function MonacoEditorTSTL({ dimensions, onChange }) {
+export default function MonacoEditorTSTL({ dimensions, src, onChange }) {
   const ref = useRef(null);
-  const [data, setData] = useState({});
 
   const updateModel = useDebounceCallback(async (model) => {
     const getWorker = await monaco.languages.typescript.getTypeScriptWorker();
@@ -16,22 +14,16 @@ export default function MonacoEditorTSTL({ dimensions, onChange }) {
     const diagnostics = [...semantics, ...syntactics];
     const { lua, sourceMap } = await client.getTranspileOutput(model.uri.toString());
     const source = model.getValue();
-    setData({ source, lua, sourceMap, diagnostics });
+    if (onChange) onChange({ src: source, lua, diagnostics, sourceMap });
   }, 250);
 
   useEffect(() => {
-    if (ref.current) updateModel(ref.current.editor.getModel());
-  }, [ref]);
-
-  useEffect(() => {
-    const lua = data.lua || '';
-
-    // If the code is error free send it to the runtime
-    if (data.diagnostics && data.diagnostics.length === 0) window.$_codepad_$.setCode(lua);
-
-    // Send the trasnpiled code to the editor for display
-    if (onChange) onChange(data.lua);
-  }, [onChange, data]);
+    if (ref.current) {
+      const model = ref.current.editor.getModel();
+      if (src) model.setValue(src);
+      updateModel(model);
+    }
+  }, [ref, src, updateModel]);
 
   const { width, height } = dimensions;
   const options = getOptions();
@@ -45,7 +37,6 @@ export default function MonacoEditorTSTL({ dimensions, onChange }) {
       ref={ref}
       options={options}
       onChange={() => updateModel(ref.current.editor.getModel())}
-      defaultValue={snippets[0] || ''}
     />
   );
 };
