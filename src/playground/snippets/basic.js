@@ -14,7 +14,7 @@ export function final(this: Props) {
 
 }
 
-export function on_input(this: Props) {
+export function on_input(this: Props, action_id: hash, action: unknown) {
 
 }
 
