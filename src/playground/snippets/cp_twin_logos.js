@@ -35,8 +35,7 @@ export function init(this: Props) {
 }
 
 export function update(this: Props, dt: number) {
-    this.targetRadius = 200 + vmath.length(this.drag.end - this.drag.begin as vmath.vector3);
-    this.targetRadius = this.targetRadius / 2;
+    this.targetRadius = 100 + vmath.length(this.drag.end - this.drag.begin as vmath.vector3);
     const step = (this.targetRadius - this.radius) / 8;
     this.radius += step;
 
