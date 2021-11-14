@@ -5,7 +5,7 @@ order: 0
 
 ## Prerequisites
 
-1. Install [NodeJS](https://nodejs.org/en/) (14+ recommended, minimal 12.18).
+1. Install [NodeJS](https://nodejs.org/en/) (14+ recommended, minimal 14.x, ymmv 16.x).
 2. Install the [Defold Editor](https://defold.com/download/).
 
 <Info>These commands may require root privileges, depending on your operating
