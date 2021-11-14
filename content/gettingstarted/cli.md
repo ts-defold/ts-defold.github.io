@@ -11,7 +11,8 @@ npm init @ts-defold ./project-name
 
 ## Requirements :label:
 
-- NodeJS version _v14.16.0_ or higher
+- __NodeJS version _v14.16.0_ or higher__
+  - Known compaitbility issue with [_v16.13.0_ on linux](https://github.com/ts-defold/create/issues/3)
 - npm
 
 ## Guide :book: 
