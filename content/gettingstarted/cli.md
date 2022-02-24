@@ -47,7 +47,7 @@ npm init @ts-defold ./project-name
 Initialize a new ***ts-defold*** app at the specified path. This command will use the [tsd-template](https://github.com/ts-defold/tsd-template) to initialize the project by default.
 
 ```
-npm init [path] [--template] [template-name]
+npm init @ts-defold [path] [--template] [template-name]
 ```
 
 `path` - path where the new project will be initialized. This should be either a new or empty directory when creating a project.
