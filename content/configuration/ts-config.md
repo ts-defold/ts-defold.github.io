@@ -38,7 +38,7 @@ support library for TypeScript language features.
 You may also change it to `require-minimal`, which generates a slimmer bundle 
 only based on the code you've used. However, it may not work if you are including external 
 TSTL-generated Lua, for example from a _npm_ package.
-You may also define this as `inline`, though it causes you bundle size to increase 
+You may also define this as `inline`, though it causes your bundle size to increase 
 due to code duplication, and is generally not recommended.
 
 
