@@ -24,25 +24,22 @@ These options are contained under the `"tstl"` key in the `.tsconfig.json` and a
 used to configure the behavior of the TypeScriptToLua transpiler.
 
 _TSTL_ comes pre-configured out of the box with some additional [plugins](/configuration/plugins) 
-that aid in translating TypeScript code to lua as used by [Defold](https://defold.com/ref/stable/go/).
+that aid in translating TypeScript code to Lua as used by [Defold](https://defold.com/ref/stable/go/).
 
 These options are of particular concern:
-- `"luaTarget": "5.1"` - Defold recommends targeting lua 5.1 for the broadest support
+- `"luaTarget": "5.1"` - Defold recommends targeting Lua 5.1 for the broadest support
 of deployment targets.  
 If you do not want to release your game on an HTML5 target, you may want to modify 
 this to bring in [additional syntax features](https://typescripttolua.github.io/docs/caveats).
 
 - `"luaLibImport": "require"` - This setting is used to generate the `lualib_bundle.lua` 
 and then insert a require statement at the top of each script to bring in the 
-support library.  
-You may also define this as inline, though it causes you bundle size to increase 
+support library for TypeScript language features.  
+You may also change it to `require-minimal`, which generates a slimmer bundle 
+only based on the code you've used. However, it may not work if you are including external 
+TSTL-generated Lua, for example from a _npm_ package.
+You may also define this as `inline`, though it causes you bundle size to increase 
 due to code duplication, and is generally not recommended.
-
-- `"trimExtensions": true` - This setting is used to enable proper file naming 
-through a patch to the _TSTL_ transpiler code. You should typically leave this 
-enabled, otherwise `.lua` will be appended to each of your game scripts.   
-You should follow the pattern of `my-script.script.ts`, `my-gui.gui_script.ts` etc. 
-so that Defold will properly categorize and run the generated script in the Defold editor.
 
 
 

@@ -13,17 +13,18 @@ hideTitle: true
 ***ts-defold*** is an awesome TypeScript toolkit for leveling-up :mushroom:
 your [Defold](https://defold.com) game projects.
 
-## What ***ts-defold*** Offers? :fire:
+## What ***ts-defold*** Offers :fire:
 
 <Tip>ts-defold is open source and free -- forever!</Tip>
 
 <Layout>
 
-- Writing your defold game scripts in TypeScript
+- Writing your Defold game scripts in TypeScript, a statically-typed language
 - Typings and auto-complete for the [Defold API](https://defold.com/ref/stable/go/)
-- Project generator and project templates 
-- ESLint and prettier configured and ready to go
-- Typeing generator that stays up to date with the Defold _API_
+- Project generator and project templates for a quick start
+- ESLint configured and ready to _lint_ your code
+- Type generator that stays up to date with the Defold _API_
+- Library of types for Defold native extensions and Lua libraries
 - Debugging with sourcemaps
 - Visual Studio Code support
 - A friendly [community of developers](https://discord.gg/eukcq5m)
@@ -33,25 +34,17 @@ your [Defold](https://defold.com) game projects.
 
 ## Why TypeScript? :sparkles:
 
-Defold uses lua for its game scripting language, and it is an excellent choice!
-The ts-defold team loves lua, and has worked with lua for years. So why TypeScript?
+Defold uses Lua for its game scripting language, and it is an excellent choice!
+The ts-defold team loves Lua, and has worked with Lua for years. So why TypeScript?
 
-TypeScript brings compiled time type checking, generics, a familar syntax, and a 
-lot of other cool features. After spending 12+ years in the game industry, we have 
-learned that the more errors and potential problems you can detect at compile time 
-over runtime, the faster you can iterate. As your project grows TypeScript will 
-pay off in spades.
+TypeScript brings compile-time type-checking, generics, cutting-edge IDE support, 
+better code maintainability, a familiar syntax, and a lot of other cool features. 
+After spending 12+ years in the game industry, we have learned that the more errors 
+and potential problems you can detect at compile-time over runtime, the faster you can iterate. 
+As your project grows, TypeScript will pay off in spades.
 
 Through the hard work of the [TypeScriptToLua](https://typescripttolua.github.io) project, 
-we have created a toolkit that generates reliable trusted lua code from TypeScript code for 
+we have created a toolkit that generates reliable, trusted Lua code from TypeScript code for 
 your Defold game project. This means that you can reason about the generated code 
 with human eyes :eyes:, know that there is a greater community supporting the transpiler, 
 and trust the 100s of tests that execute on the _TSTL_ codebase.
-
-## Roadmap :construction_worker: 
-
-<Info>Check Github Issues for the latest</Info>
-
-- Auto typings for [extensions](https://github.com/ts-defold/type-gen/issues/8) _WIP_
-- Fancy development server, embeded in `@ts-defold/create`
-- JSX support

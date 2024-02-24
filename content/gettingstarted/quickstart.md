@@ -5,7 +5,7 @@ order: 0
 
 ## Prerequisites
 
-1. Install [NodeJS](https://nodejs.org/en/) (14+ recommended, minimal 14.x, ymmv 16.x).
+1. Install [NodeJS](https://nodejs.org/en/) (LTS recommended).
 2. Install the [Defold Editor](https://defold.com/download/).
 
 <Info>These commands may require root privileges, depending on your operating
@@ -29,7 +29,7 @@ system and configuration.</Info>
    ```bash
    npm run dev
    ```
-   The development server will start a file watcher and tstl compiler to incrementally compile your changes on save.
+   The development server will start a file watcher and TSTL compiler to incrementally compile your changes on save.
 
 4. Open the project in the Defold Editor *([installing defold](https://defold.com/manuals/install/))*
    ```bash
@@ -44,9 +44,9 @@ system and configuration.</Info>
 ## Project Directory Structure
 
 ```bash
-├─ .eslintrc             # Eslint configured to handle the caveats of tstl & ts-defold
+├─ .eslintrc             # Eslint configured to handle the caveats of TSTL & ts-defold
 ├─ package.json          # NPM package dependencies and metadata
-├─ tsconfig.json         # TypeScript compiler configuration for tstl & ts-defold
+├─ tsconfig.json         # TypeScript compiler configuration for TSTL & ts-defold
 │
 ├─ app/                  # The Defold game project
 │  ├─ lualib_bundle.lua  # TypeScript support library
