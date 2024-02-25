@@ -12,7 +12,7 @@ a strictly typed language like TypeScript. Here's how we handle it:
 # Library
 
 The [@ts-defold/library](https://github.com/ts-defold/library) contains user-submitted 
-types for popular Defold extensions. The library is installed in all ts-defold templates. 
+types for popular Defold extensions. The library is included in all ts-defold templates. 
 Install your preferred extensions in Defold, then type `npm run resolve` to fetch 
 the matching types from the library.
 
