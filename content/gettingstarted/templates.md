@@ -13,6 +13,10 @@ The [default template](https://github.com/ts-defold/tsd-template) is the starter
 template that all other templates derive from. It provides the initial project setup, 
 configuration files, and plugins required to start a new ***ts-defold*** project.
 
+## War Battles Template
+If you're looking to learn the basics of Defold and ts-defold, the 
+[War Battles template](https://github.com/ts-defold/tsd-template-war-battles) is a great starting point.
+
 ## Template Development & Discovery
 Current templates use the [ts-defold-template](https://github.com/topics/ts-defold-template) 
 topic on Github and the repo names adhere to the pattern `tsd-template-*` for easier 
