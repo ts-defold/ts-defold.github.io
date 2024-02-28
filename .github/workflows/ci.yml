@@ -1,9 +1,8 @@
-name: Deploy site
+name: Test deployment
 
 on:
-  push:
-    branches:
-      - main
+  pull_request:
+    branches: [main]
 
 jobs:
   build:
@@ -17,3 +16,4 @@ jobs:
         with:
           access-token: ${{ secrets.ACCESS_TOKEN }}
           deploy-branch: gh-pages
+          skip-publish: true
