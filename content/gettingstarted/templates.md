@@ -5,17 +5,21 @@ order: 2
 
 ## Template Repositories
 
-Templates are repositories hosted on github that are pre-configured to provide a 
+Templates are repositories hosted on Github that are pre-configured to provide a 
 turnkey setup experience.
 
 ## Default Template
-The [default template](https://github.com/ts-defold/tsd-template) is the genesis 
+The [default template](https://github.com/ts-defold/tsd-template) is the starter 
 template that all other templates derive from. It provides the initial project setup, 
-configuration files, patches, and plugins required to start a new ***ts-defold*** project.
+configuration files, and plugins required to start a new ***ts-defold*** project.
+
+## War Battles Template
+If you're looking to learn the basics of Defold and ts-defold, the 
+[War Battles template](https://github.com/ts-defold/tsd-template-war-battles) is a great starting point.
 
 ## Template Development & Discovery
 Current templates use the [ts-defold-template](https://github.com/topics/ts-defold-template) 
-topic on github and the repo names adhere to the pattern `tsd-template-*` for easier 
+topic on Github and the repo names adhere to the pattern `tsd-template-*` for easier 
 discovery.
 
 If you are creating your own template, you must name it `tsd-template-*` 

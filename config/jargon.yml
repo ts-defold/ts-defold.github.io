@@ -43,3 +43,12 @@ regex:
   name: RegEx
   long_name: Regular Expression
   description: A PCRE compatible Regular Expression statement
+npm:
+  name: npm
+  long_name: Node Package Manager
+  description: The package manager for the NodeJS runtime that allows 
+    installing and updating packages
+lint:
+  name: lint
+  description: Linting is the process of analyzing source code to find 
+    and fix programming errors, stylistic issues, and potential bugs
