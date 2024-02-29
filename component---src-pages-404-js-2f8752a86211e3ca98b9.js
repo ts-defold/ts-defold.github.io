@@ -1,0 +1,2 @@
+(window.__LOADABLE_LOADED_CHUNKS__=window.__LOADABLE_LOADED_CHUNKS__||[]).push([[7],{w2l6:function(t,_,e){"use strict";e.r(_);e("q1tI");var u=e("qKvR");_.default=()=>Object(u.c)("div",null,Object(u.c)("h1",null,"NOT FOUND"),Object(u.c)("p",null,"You just hit a route that doesn't exist... the sadness."))}}]);
+//# sourceMappingURL=component---src-pages-404-js-2f8752a86211e3ca98b9.js.map
