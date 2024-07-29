@@ -24,5 +24,4 @@ and generate types automagically.
 
 # Write Your Own
 
-If all else fails, you can read the documentation and write your own types. 
-Your preferred AI tool (like Chat-GPT) may also be able to help get you most of the way there.
+If all else fails, you can write your own types by hand, or ask an AI tool to help.
