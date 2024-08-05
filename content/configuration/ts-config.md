@@ -30,7 +30,7 @@ These options are of particular concern:
 - `"luaTarget": "5.1"` - Defold recommends targeting Lua 5.1 for the broadest support
 of deployment targets.  
 If you do not want to release your game on an HTML5 target, you may want to modify 
-this to bring in [additional syntax features](https://typescripttolua.github.io/docs/caveats).
+the value to `"JIT"` to bring in [additional syntax features](https://typescripttolua.github.io/docs/caveats).
 
 - `"luaLibImport": "require"` - This setting is used to generate the `lualib_bundle.lua` 
 and then insert a require statement at the top of each script to bring in the 
