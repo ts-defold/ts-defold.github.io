@@ -7,27 +7,22 @@ order: 2
 
 ## Export Globals
 
-The [@ts-defold/tstl-export-as-global](https://github.com/ts-defold/tstl-export-as-global) 
+The [tstl-export-to-global](https://github.com/thinknathan/tstl-export-to-global) 
 plugin is used to allow the export function to emulate the expected behavior of 
 "exports" in a Defold game script.
 
 The `init`, `on_input`, `on_message`, `on_reload`, `update`, and `final` functions 
 are executed on each game script by the Defold game engine. Each of those functions 
-are expected to be defined in the file scope of the game script in order for the 
-game engine to execute them.
+are expected to be defined in the file scope of the game script for the game engine 
+to execute them.
 
-In order to adhere to these requirements, the ***tstl-export-as-global*** plugin 
-will look for any exported function that matches a `globals: { functions: [] }` array
-defined in the `.tsconfig.json` plugin configuration options, and hoist them to the global
-scope of the file.
+To adhere to these requirements, the ***tstl-export-to-global*** plugin will hoist 
+all exports to the global scope of the file.
 
 ```json
 {
-    "name": "@ts-defold/tstl-export-as-global",
-    "match": ".*script.ts$",
-    "globals": { 
-        "functions": [ "init", "on_input", "on_message", "on_reload", "update", "final" ]
-    }
+    "name": "tstl-export-to-global",
+    "match": ".*\\..*script.ts$"
 }
 ```
 
