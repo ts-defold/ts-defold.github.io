@@ -44,9 +44,14 @@ system and configuration.</Info>
 ## Project Directory Structure
 
 ```bash
-├─ .eslintrc             # Eslint configured to handle the caveats of TSTL & ts-defold
+├─ .prettierrc.json      # Configuration for prettier code formatting
+├─ eslint.config.mjs     # Eslint configured to handle the caveats of TSTL & ts-defold
 ├─ package.json          # NPM package dependencies and metadata
 ├─ tsconfig.json         # TypeScript compiler configuration for TSTL & ts-defold
+│
+├─ .github/              # Github workflows and automation [optional]
+├─ .vscode/              # Settings, extensions, and tasks for Visual Studio Code
+├─ @types/               # Type definitions for your project and native extensions
 │
 ├─ app/                  # The Defold game project
 │  ├─ lualib_bundle.lua  # TypeScript support library
