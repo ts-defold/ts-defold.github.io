@@ -3,7 +3,7 @@ title: "Plugins"
 order: 2
 ---
 
-[TypeScriptToLua](https://typescripttolua.github.io/docs/api/plugins) allows you to extend the transpilers behavior and ***ts-defold*** uses this _API_ to bring some quality of life and necessary features to using TypeScript with Defold.
+[TypeScriptToLua](https://typescripttolua.github.io/docs/api/plugins) allows you to extend the transpiler's behavior and ***ts-defold*** uses this _API_ to bring some quality of life and necessary features to using TypeScript with Defold.
 
 ## Export Globals
 
@@ -11,10 +11,10 @@ The [tstl-export-to-global](https://github.com/thinknathan/tstl-export-to-global
 plugin is used to allow the export function to emulate the expected behavior of 
 "exports" in a Defold game script.
 
-The `init`, `on_input`, `on_message`, `on_reload`, `update`, and `final` functions 
-are executed on each game script by the Defold game engine. Each of those functions 
-are expected to be defined in the file scope of the game script for the game engine 
-to execute them.
+The `init`, `on_input`, `on_message`, `on_reload`, `update`, `fixed_update`, and 
+`final` functions are executed on each game script by the Defold game engine. 
+Each of those functions are expected to be defined in the file scope of the 
+game script for the game engine to execute them.
 
 To adhere to these requirements, the ***tstl-export-to-global*** plugin will hoist 
 all exports to the global scope of the file.
