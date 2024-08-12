@@ -34,7 +34,7 @@ tstl:
   name: TSTL
   long_name: TypeScriptToLua Transpiler
   description: An extension to the TypeScript compiler that transpiles TypeScript
-    code to lua
+    code to Lua
 wip:
   name: WIP
   long_name: Work In Progress
