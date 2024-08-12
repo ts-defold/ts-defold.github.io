@@ -3,10 +3,10 @@ title: "Defold API"
 order: 3
 ---
 
-Getting accurate types for the Defold API is an important part of ts-defold. Here are some 
+Getting accurate types for the Defold API is an important part of ***ts-defold***. Here are some 
 ways to get the definitions you need:
 
-:sparkles: The `types` library is built-in into all ts-defold templates, and is automatically 
+:sparkles: The `types` library is built-in into all ***ts-defold*** templates, and is automatically 
 published to keep up with the latest changes to Defold.
 
 :star2: [TS-Defold Types II](https://github.com/thinknathan/ts-defold-types) 
@@ -45,7 +45,7 @@ const result = (go.get_position() + vmath.vector3(1, 1, 1)) as vmath.vector3; //
 
 Or you can use the 
 [Operator Map Types](https://typescripttolua.github.io/docs/advanced/language-extensions#operator-map-types) 
-provided by TSTL to enable full type checking.
+provided by _TSTL_ to enable full type checking.
 
 :notes: [Utility Types](https://github.com/thinknathan/tsd-util-types/blob/main/types/vmath.d.ts) 
 include all relevant vector math operations.
